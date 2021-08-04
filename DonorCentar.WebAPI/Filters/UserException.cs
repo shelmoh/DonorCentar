@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DonorCentar.Filters
+namespace DonorCentar.WebAPI.Filters
 {
     public class UserException : Exception
     {

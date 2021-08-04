@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DonorCentar.WebAPI.Filters;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace DonorCentar.Filters
+namespace DonorCentar.WebAPI.Filters
 {
     public class ErrorFilter : ExceptionFilterAttribute
     {

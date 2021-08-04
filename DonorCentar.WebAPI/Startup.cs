@@ -1,5 +1,6 @@
-using DonorCentar.Filters;
+using DonorCentar.WebAPI.Filters;
 using DonorCentar.WebAPI.Database;
+using DonorCentar.WebAPI.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -38,6 +39,15 @@ namespace DonorCentar.WebAPI
             {
                 x.Filters.Add<ErrorFilter>();
             });
+
+
+            services.AddScoped<IKorisniciService, KorisniciService>();
+
+            services.AddScoped<IKantonService, KantonService>();
+
+            services.AddScoped<IGradService, GradService>();
+
+            services.AddScoped<ITipKorisnikaService, TipKorisnikaService>();
 
 
         }

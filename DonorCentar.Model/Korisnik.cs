@@ -18,5 +18,12 @@ namespace DonorCentar.Model
         public int TipKorisnikaId { get; set; }
 
 
+        public string Ime => LicniPodaci?.Ime;
+        public string Prezime => LicniPodaci?.Prezime;
+        public string Email => LicniPodaci?.Email;
+        public string GradNaziv => Grad?.Naziv;
+
+        public string Tip => TipKorisnika?.Tip;
+
     }
 }
