@@ -12,14 +12,42 @@ namespace DonorCentar.WinUI
 {
     public partial class frmLogin : Form
     {
+        APIService korisniciService = new APIService("Korisnici");
         public frmLogin()
         {
+
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
 
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            APIService.Username = txtKorisnickoIme.Text;
+            APIService.Password = txtLozinka.Text;
+            try
+            {
+                APIService.CurrentUser = await korisniciService.GetAll<Model.Korisnik>(null, "Profil");
+
+                if(APIService.CurrentUser!=null)
+                {
+
+               
+                if (APIService.CurrentUser.Tip != "Administrator")
+                {
+                    MessageBox.Show("Nemate dozvolu da se prijavite.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                DialogResult = DialogResult.OK;
+                }
+                else MessageBox.Show("Neispravni podaci za prijavu.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }

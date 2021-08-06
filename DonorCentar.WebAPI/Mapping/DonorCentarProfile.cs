@@ -35,6 +35,11 @@ namespace DonorCentar.WebAPI.Mapping
             CreateMap<KorisniciInsertRequest, Database.Korisnik>().ReverseMap();
             CreateMap<KorisniciUpdateRequest, Database.Korisnik>().ReverseMap();
 
+
+            CreateMap<ObavijestUpdateRequest, Database.Obavijest>().ReverseMap();
+            CreateMap<ObavijestInsertRequest, Database.Obavijest>().ReverseMap();
+   
+
         }
 
     }

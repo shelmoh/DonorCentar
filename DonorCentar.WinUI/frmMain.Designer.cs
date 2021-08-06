@@ -34,12 +34,14 @@ namespace DonorCentar.WinUI
             this.prikazKorisnikaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajKorisnikaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verifikujPrimaocaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mojProfilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mojProfilToolStripMenuItem,
             this.korisniciToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -78,6 +80,13 @@ namespace DonorCentar.WinUI
             this.verifikujPrimaocaToolStripMenuItem.Text = "Verifikuj primaoca";
             this.verifikujPrimaocaToolStripMenuItem.Click += new System.EventHandler(this.verifikujPrimaocaToolStripMenuItem_Click);
             // 
+            // mojProfilToolStripMenuItem
+            // 
+            this.mojProfilToolStripMenuItem.Name = "mojProfilToolStripMenuItem";
+            this.mojProfilToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.mojProfilToolStripMenuItem.Text = "Moj profil";
+            this.mojProfilToolStripMenuItem.Click += new System.EventHandler(this.mojProfilToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -106,5 +115,6 @@ namespace DonorCentar.WinUI
         private System.Windows.Forms.ToolStripMenuItem prikazKorisnikaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodajKorisnikaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verifikujPrimaocaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mojProfilToolStripMenuItem;
     }
 }

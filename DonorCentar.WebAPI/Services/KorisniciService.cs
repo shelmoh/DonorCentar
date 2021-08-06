@@ -94,7 +94,7 @@ namespace DonorCentar.WebAPI.Services
 
         public Korisnici Update(int id, KorisniciUpdateRequest request)
         {
-            var entity = Context.Korisnik.Where(x=>x.Id==id).Include(x=>x.LoginPodaci).Include(x => x.LicniPodaci).FirstOrDefault();
+            var entity = Context.Korisnik.Where(x=>x.Id==id).Include(x=>x.LoginPodaci).Include(x => x.LicniPodaci).Include(x => x.Grad.Kanton).FirstOrDefault();
             entity.GradId = request.GradId;
             entity.TipKorisnikaId = request.TipKorisnikaId;
             entity.LicniPodaci.Adresa = request.LicniPodaci.Adresa;
@@ -109,7 +109,9 @@ namespace DonorCentar.WebAPI.Services
             entity.LicniPodaci.ProfilnaSlika = request.LicniPodaci.ProfilnaSlika;
 
             entity.LoginPodaci.KorisnickoIme = request.LoginPodaci.KorisnickoIme;
+            if(!string.IsNullOrEmpty( request.LoginPodaci.Sifra ) )
             entity.LoginPodaci.Sifra = HashSifru(request.LoginPodaci.Sifra);
+
 
 
 

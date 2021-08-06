@@ -8,15 +8,18 @@ namespace DonorCentar.WinUI
 {
     static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
+        
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+
+            var frm = new frmLogin();
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new frmMain());
+            }
         }
     }
 }

@@ -18,12 +18,13 @@ namespace DonorCentar.WinUI
 
         public static string Username { get; set; }
         public static string Password { get; set; }
+        public static Korisnik CurrentUser { get; internal set; }
 
         public APIService(string resource)
         {
             _resource = resource;
         }
-        public async Task<T> GetAll<T>(object searchRequest = null)
+        public async Task<T> GetAll<T>(object searchRequest = null, string action = null)
         {
             var query = "";
             if (searchRequest != null)
@@ -31,7 +32,7 @@ namespace DonorCentar.WinUI
                 query = await searchRequest?.ToQueryString();
             }
 
-            var list = await $"{endpoint}{_resource}?{query}"
+            var list = await ($"{endpoint}{_resource}"+(action != null ? "/" + action : "") +$"?{query}")
                .WithBasicAuth(Username, Password).GetJsonAsync<T>();
 
             return list;

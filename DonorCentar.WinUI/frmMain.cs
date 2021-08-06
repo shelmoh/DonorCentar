@@ -44,5 +44,12 @@ namespace DonorCentar.WinUI
 
             
         }
+
+        private void mojProfilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmMojProfil frm = new frmMojProfil();
+            frm.ShowDialog();
+
+        }
     }
 }

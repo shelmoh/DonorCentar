@@ -79,6 +79,8 @@ namespace DonorCentar.WebAPI
 
             services.AddScoped<IPrimalacService, PrimalacService>();
 
+            services.AddScoped<IObavijestService, ObavijestService>();
+
 
 
 

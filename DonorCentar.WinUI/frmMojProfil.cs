@@ -12,52 +12,43 @@ using System.Windows.Forms;
 
 namespace DonorCentar.WinUI
 {
-    public partial class frmKorisniciDetalji : Form
+    public partial class frmMojProfil : Form
     {
-        private readonly Model.Korisnik korisnik ;
+
+        private readonly Model.Korisnik korisnik;
         private readonly APIService KantonService = new APIService("Kantoni");
         private readonly APIService GradService = new APIService("Gradovi");
         private KorisniciInsertRequest request = new KorisniciInsertRequest();
         private readonly APIService KorisnikService = new APIService("Korisnici");
         private readonly APIService TipKorisnikaService = new APIService("TipKorisnika");
 
-        public frmKorisniciDetalji()
-        {
-            InitializeComponent();
-        }
 
-        public frmKorisniciDetalji(Model.Korisnik kor)
+
+        public frmMojProfil()
         {
-            korisnik = kor;
+            korisnik = APIService.CurrentUser;
             InitializeComponent();
         }
 
         private void btnOdaberiSliku_Click(object sender, EventArgs e)
         {
-            if(openFileDialog1.ShowDialog()==DialogResult.OK)
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 var file = File.ReadAllBytes(openFileDialog1.FileName);
                 request.LicniPodaci.ProfilnaSlika = file;
-                pictureBox1.Image= Image.FromFile(openFileDialog1.FileName);
+                pictureBox1.Image = Image.FromFile(openFileDialog1.FileName);
             }
         }
 
         private async void frmKorisniciDetalji_Load(object sender, EventArgs e)
         {
             await UcitajKantone();
-            await UcitajTipKorisnika();
+
 
             if (korisnik != null)
                 await PrikaziPodatke();
         }
 
-        private async Task UcitajTipKorisnika()
-        {
-            var list = await TipKorisnikaService.GetAll<List<Model.TipKorisnika>>();
-
-            cmbTipKorisnika.DataSource = list;
-            cmbTipKorisnika.DisplayMember = "Tip";
-        }
 
         private async Task UcitajKantone()
         {
@@ -83,8 +74,8 @@ namespace DonorCentar.WinUI
             cmbGrad.DataSource = list;
             cmbGrad.DisplayMember = "Naziv";
 
-            
-                
+
+
 
         }
 
@@ -99,28 +90,28 @@ namespace DonorCentar.WinUI
             request.LoginPodaci.KorisnickoIme = txtKorisnickoIme.Text;
             request.LoginPodaci.Sifra = txtSifra.Text;
             request.GradId = (cmbGrad.SelectedItem as Model.Grad).Id;
-            request.TipKorisnikaId = (cmbTipKorisnika.SelectedItem as Model.TipKorisnika).Id;
+            request.TipKorisnikaId = korisnik.TipKorisnikaId;
 
             Model.Korisnik entity;
 
-            if(korisnik!=null)
-                entity = await KorisnikService.Update<Model.Korisnik>(korisnik.Id,request);
-            else
-                entity = await KorisnikService.Insert<Model.Korisnik>(request);
+
+            entity = await KorisnikService.Update<Model.Korisnik>(korisnik.Id, request);
 
 
-            if(entity!=null)
+
+            if (entity != null)
             {
-                if(korisnik!=null)
-                    MessageBox.Show("Korisnik je izmijenjen.");
-                else
-                    MessageBox.Show("Korisnik je uspješno dodan.");
+                if (!string.IsNullOrEmpty(request.LoginPodaci.Sifra))
+                    APIService.Password = request.LoginPodaci.Sifra;
+                APIService.CurrentUser = entity;
+                MessageBox.Show("Profil je izmijenjen.");
+
                 Close();
             }
 
 
 
-            
+
 
 
 
@@ -136,24 +127,12 @@ namespace DonorCentar.WinUI
             txtKorisnickoIme.Text = korisnik.LoginPodaci.KorisnickoIme;
 
 
-
-
             if (korisnik.LicniPodaci.ProfilnaSlika != null && korisnik.LicniPodaci.ProfilnaSlika.Length > 0)
             {
                 MemoryStream ms = new MemoryStream(korisnik.LicniPodaci.ProfilnaSlika);
                 pictureBox1.Image = Image.FromStream(ms);
 
             }
-
-
-            foreach (Model.TipKorisnika item in cmbTipKorisnika.Items)
-            {
-                if (item.Id == korisnik.TipKorisnikaId)
-                {
-                    cmbTipKorisnika.SelectedItem = item;
-                }
-            }
-
 
 
             foreach (Model.Kanton item in cmbKanton.Items)
@@ -178,3 +157,4 @@ namespace DonorCentar.WinUI
 
     }
 }
+
