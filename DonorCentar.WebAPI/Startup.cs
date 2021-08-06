@@ -13,6 +13,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Authentication;
+using DonorCentar.WebAPI.Security;
 
 namespace DonorCentar.WebAPI
 {
@@ -34,7 +37,32 @@ namespace DonorCentar.WebAPI
 
             services.AddAutoMapper(typeof(Startup));
 
-            services.AddSwaggerGen();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "DonorCentar API", Version = "v1" });
+
+                c.AddSecurityDefinition("basicAuth", new OpenApiSecurityScheme
+                {
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "basic"
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "basicAuth" }
+                        },
+                        new string[]{}
+                    }
+                });
+            });
+
+
+            
+
+
             services.AddControllers(x =>
             {
                 x.Filters.Add<ErrorFilter>();
@@ -48,6 +76,14 @@ namespace DonorCentar.WebAPI
             services.AddScoped<IGradService, GradService>();
 
             services.AddScoped<ITipKorisnikaService, TipKorisnikaService>();
+
+            services.AddScoped<IPrimalacService, PrimalacService>();
+
+
+
+
+            services.AddAuthentication("BasicAuthentication")
+                .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
 
 
         }
@@ -63,6 +99,9 @@ namespace DonorCentar.WebAPI
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseAuthentication();
+
 
             app.UseEndpoints(endpoints =>
             {

@@ -1,5 +1,6 @@
 ﻿using DonorCentar.Model.Requests;
 using DonorCentar.WebAPI.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,12 @@ namespace DonorCentar.WebAPI.Controllers
         public Model.Korisnik Update(int id, [FromBody] KorisniciUpdateRequest request)
         {
             return _service.Update(id, request);
+        }
+
+        [HttpGet("Profil")]
+        public Model.Korisnik Profil()
+        {
+            return _service.Profil();
         }
     }
 }

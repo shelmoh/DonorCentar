@@ -33,6 +33,7 @@ namespace DonorCentar.WinUI
             this.korisniciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.prikazKorisnikaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajKorisnikaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verifikujPrimaocaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +51,8 @@ namespace DonorCentar.WinUI
             // 
             this.korisniciToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.prikazKorisnikaToolStripMenuItem,
-            this.dodajKorisnikaToolStripMenuItem});
+            this.dodajKorisnikaToolStripMenuItem,
+            this.verifikujPrimaocaToolStripMenuItem});
             this.korisniciToolStripMenuItem.Name = "korisniciToolStripMenuItem";
             this.korisniciToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.korisniciToolStripMenuItem.Text = "Korisnici";
@@ -68,6 +70,13 @@ namespace DonorCentar.WinUI
             this.dodajKorisnikaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.dodajKorisnikaToolStripMenuItem.Text = "Dodaj korisnika";
             this.dodajKorisnikaToolStripMenuItem.Click += new System.EventHandler(this.dodajKorisnikaToolStripMenuItem_Click);
+            // 
+            // verifikujPrimaocaToolStripMenuItem
+            // 
+            this.verifikujPrimaocaToolStripMenuItem.Name = "verifikujPrimaocaToolStripMenuItem";
+            this.verifikujPrimaocaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.verifikujPrimaocaToolStripMenuItem.Text = "Verifikuj primaoca";
+            this.verifikujPrimaocaToolStripMenuItem.Click += new System.EventHandler(this.verifikujPrimaocaToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -96,5 +105,6 @@ namespace DonorCentar.WinUI
         private System.Windows.Forms.ToolStripMenuItem korisniciToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem prikazKorisnikaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodajKorisnikaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verifikujPrimaocaToolStripMenuItem;
     }
 }

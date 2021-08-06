@@ -60,6 +60,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIService.cs" />
+    <Compile Include="frmVerifikacija.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVerifikacija.Designer.cs">
+      <DependentUpon>frmVerifikacija.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmKorisnici.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmVerifikacija.resx">
+      <DependentUpon>frmVerifikacija.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmKorisnici.resx">
       <DependentUpon>frmKorisnici.cs</DependentUpon>
     </EmbeddedResource>

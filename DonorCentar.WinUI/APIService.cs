@@ -68,11 +68,11 @@ namespace DonorCentar.WinUI
 
         }
 
-        public async Task<T> Update<T>(int id, object request)
+        public async Task<T> Update<T>(int id, object request, string action=null)
         {
             try
             {
-                var url = $"{endpoint}{_resource}/{id}";
+                var url = $"{endpoint}{_resource}"+(action!=null?"/"+action:"")+$"/{id}";
 
                 return await url.WithBasicAuth(Username, Password).PutJsonAsync(request).ReceiveJson<T>();
             }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DonorCentar.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,5 +10,6 @@ namespace DonorCentar.WebAPI.Services
     {
         IEnumerable<T> Get(TSearch search = null);
         public T GetById(int id);
+        
     }
 }

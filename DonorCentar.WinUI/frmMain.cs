@@ -34,5 +34,15 @@ namespace DonorCentar.WinUI
             frm.ShowDialog();
 
         }
+
+        private void verifikujPrimaocaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+
+                frmVerifikacija frm = new frmVerifikacija();
+                frm.ShowDialog();
+
+            
+        }
     }
 }

@@ -16,6 +16,8 @@ namespace DonorCentar.WebAPI.Services
     public class KorisniciService : IKorisniciService
     {
         public BazaPodataka Context { get; set; }
+        public Korisnici LogiraniKorisnik { get; private set; }
+
         protected readonly IMapper _mapper;
 
         public KorisniciService(BazaPodataka context, IMapper mapper)
@@ -133,6 +135,38 @@ namespace DonorCentar.WebAPI.Services
             return sb.ToString();
         }
 
+        public async Task<Model.Korisnik> Login(string username, string password)
+        {
+            var entity = await Context.Korisnik.Where(x => x.LoginPodaci.KorisnickoIme == username).Include(x => x.Grad.Kanton).Include(x => x.LicniPodaci).Include(x => x.TipKorisnika).Include(x => x.LoginPodaci).FirstOrDefaultAsync();
+
+
+            if (entity != null)
+                if (HashSifru(password) == entity.LoginPodaci.Sifra)
+                    return _mapper.Map<Model.Korisnik>(entity);
+
+           throw new UserException("Pogrešan username ili password"); 
+        }
+
+        public void SetLogiraniKorisnik(Korisnici user)
+        {
+            LogiraniKorisnik = user;
+        }
+
+
+        public Korisnici Profil()
+        {
+            var query = Context.Korisnik.AsQueryable();
+
+            query = query.Include(x => x.Grad.Kanton);
+            query = query.Include(x => x.LicniPodaci);
+            query = query.Include(x => x.TipKorisnika);
+
+
+            if (LogiraniKorisnik == null)
+                return null;
+
+            return _mapper.Map<Model.Korisnik>(query.FirstOrDefault(x => x.Id==LogiraniKorisnik.Id));
+        }
     }
 }
 
