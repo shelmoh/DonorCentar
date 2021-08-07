@@ -45,6 +45,7 @@ namespace DonorCentar.WebAPI.Controllers
         }
 
         [HttpGet("Profil")]
+        [Authorize]
         public Model.Korisnik Profil()
         {
             return _service.Profil();

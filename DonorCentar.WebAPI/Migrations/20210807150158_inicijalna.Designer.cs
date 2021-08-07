@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DonorCentar.WebAPI.Migrations
 {
     [DbContext(typeof(BazaPodataka))]
-    [Migration("20210730135433_baza")]
-    partial class baza
+    [Migration("20210807150158_inicijalna")]
+    partial class inicijalna
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -262,7 +262,10 @@ namespace DonorCentar.WebAPI.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Naziv")
+                    b.Property<string>("Ime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Prezime")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<byte[]>("ProfilnaSlika")
@@ -291,9 +294,9 @@ namespace DonorCentar.WebAPI.Migrations
                     b.ToTable("LoginPodaci");
                 });
 
-            modelBuilder.Entity("DonorCentar.WebAPI.Database.Obavijest", b =>
+            modelBuilder.Entity("DonorCentar.WebAPI.Database.Notifikacija", b =>
                 {
-                    b.Property<int>("ObavijestId")
+                    b.Property<int>("NotifikacijaId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -307,8 +310,10 @@ namespace DonorCentar.WebAPI.Migrations
                     b.Property<int>("TipKorisnikaId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TipObavijestiId")
+                    b.Property<int?>("TipNotifikacijeId")
                         .HasColumnType("int");
+
+                    
 
                     b.Property<DateTime>("Vrijeme")
                         .HasColumnType("datetime2");
@@ -316,15 +321,36 @@ namespace DonorCentar.WebAPI.Migrations
                     b.Property<int>("ZaKorisnikId")
                         .HasColumnType("int");
 
-                    b.HasKey("ObavijestId");
+                    b.HasKey("NotifikacijaId");
 
                     b.HasIndex("DonacijaId");
 
                     b.HasIndex("OdKorisnikId");
 
-                    b.HasIndex("TipObavijestiId");
+                    b.HasIndex("TipNotifikacijeId");
 
                     b.HasIndex("ZaKorisnikId");
+
+                    b.ToTable("Notifikacija");
+                });
+
+            modelBuilder.Entity("DonorCentar.WebAPI.Database.Obavijest", b =>
+                {
+                    b.Property<int>("ObavijestId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Naslov")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sadrzaj")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Vrijeme")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ObavijestId");
 
                     b.ToTable("Obavijest");
                 });
@@ -420,19 +446,19 @@ namespace DonorCentar.WebAPI.Migrations
                     b.ToTable("TipKorisnika");
                 });
 
-            modelBuilder.Entity("DonorCentar.WebAPI.Database.TipObavijesti", b =>
+            modelBuilder.Entity("DonorCentar.WebAPI.Database.TipNotifikacije", b =>
                 {
-                    b.Property<int>("TipObavijestiId")
+                    b.Property<int>("TipNotifikacijeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Obavijest")
+                    b.Property<string>("Notifikacija")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("TipObavijestiId");
+                    b.HasKey("TipNotifikacijeId");
 
-                    b.ToTable("TipObavijesti");
+                    b.ToTable("TipNotifikacije");
                 });
 
             modelBuilder.Entity("DonorCentar.WebAPI.Database.VrstaDonacije", b =>
@@ -562,7 +588,7 @@ namespace DonorCentar.WebAPI.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("DonorCentar.WebAPI.Database.Obavijest", b =>
+            modelBuilder.Entity("DonorCentar.WebAPI.Database.Notifikacija", b =>
                 {
                     b.HasOne("DonorCentar.WebAPI.Database.Donacija", "Donacija")
                         .WithMany()
@@ -574,11 +600,9 @@ namespace DonorCentar.WebAPI.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DonorCentar.WebAPI.Database.TipObavijesti", "TipObavijesti")
+                    b.HasOne("DonorCentar.WebAPI.Database.TipNotifikacije", "TipNotifikacije")
                         .WithMany()
-                        .HasForeignKey("TipObavijestiId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TipNotifikacijeId");
 
                     b.HasOne("DonorCentar.WebAPI.Database.Korisnik", "ZaKorisnik")
                         .WithMany()

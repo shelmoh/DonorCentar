@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DonorCentar.WebAPI.Migrations
 {
-    public partial class baza : Migration
+    public partial class inicijalna : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -52,7 +52,8 @@ namespace DonorCentar.WebAPI.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Naziv = table.Column<string>(nullable: true),
+                    Ime = table.Column<string>(nullable: true),
+                    Prezime = table.Column<string>(nullable: true),
                     BrojTelefona = table.Column<string>(nullable: true),
                     Adresa = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
@@ -75,6 +76,21 @@ namespace DonorCentar.WebAPI.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_LoginPodaci", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Obavijest",
+                columns: table => new
+                {
+                    ObavijestId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Naslov = table.Column<string>(nullable: true),
+                    Sadrzaj = table.Column<string>(nullable: true),
+                    Vrijeme = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Obavijest", x => x.ObavijestId);
                 });
 
             migrationBuilder.CreateTable(
@@ -117,16 +133,16 @@ namespace DonorCentar.WebAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TipObavijesti",
+                name: "TipNotifikacije",
                 columns: table => new
                 {
-                    TipObavijestiId = table.Column<int>(nullable: false)
+                    TipNotifikacijeId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Obavijest = table.Column<string>(nullable: true)
+                    Notifikacija = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TipObavijesti", x => x.TipObavijestiId);
+                    table.PrimaryKey("PK_TipNotifikacije", x => x.TipNotifikacijeId);
                 });
 
             migrationBuilder.CreateTable(
@@ -383,12 +399,12 @@ namespace DonorCentar.WebAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Obavijest",
+                name: "Notifikacija",
                 columns: table => new
                 {
-                    ObavijestId = table.Column<int>(nullable: false)
+                    NotifikacijaId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TipObavijestiId = table.Column<int>(nullable: false),
+                    TipNotifikacijeId = table.Column<int>(nullable: true),
                     ZaKorisnikId = table.Column<int>(nullable: false),
                     OdKorisnikId = table.Column<int>(nullable: false),
                     TipKorisnikaId = table.Column<int>(nullable: false),
@@ -397,27 +413,27 @@ namespace DonorCentar.WebAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Obavijest", x => x.ObavijestId);
+                    table.PrimaryKey("PK_Notifikacija", x => x.NotifikacijaId);
                     table.ForeignKey(
-                        name: "FK_Obavijest_Donacija_DonacijaId",
+                        name: "FK_Notifikacija_Donacija_DonacijaId",
                         column: x => x.DonacijaId,
                         principalTable: "Donacija",
                         principalColumn: "DonacijaId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Obavijest_Korisnik_OdKorisnikId",
+                        name: "FK_Notifikacija_Korisnik_OdKorisnikId",
                         column: x => x.OdKorisnikId,
                         principalTable: "Korisnik",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Obavijest_TipObavijesti_TipObavijestiId",
-                        column: x => x.TipObavijestiId,
-                        principalTable: "TipObavijesti",
-                        principalColumn: "TipObavijestiId",
-                        onDelete: ReferentialAction.Cascade);
+                        name: "FK_Notifikacija_TipNotifikacije_TipNotifikacijeId",
+                        column: x => x.TipNotifikacijeId,
+                        principalTable: "TipNotifikacije",
+                        principalColumn: "TipNotifikacijeId",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Obavijest_Korisnik_ZaKorisnikId",
+                        name: "FK_Notifikacija_Korisnik_ZaKorisnikId",
                         column: x => x.ZaKorisnikId,
                         principalTable: "Korisnik",
                         principalColumn: "Id",
@@ -510,23 +526,23 @@ namespace DonorCentar.WebAPI.Migrations
                 column: "TipKorisnikaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Obavijest_DonacijaId",
-                table: "Obavijest",
+                name: "IX_Notifikacija_DonacijaId",
+                table: "Notifikacija",
                 column: "DonacijaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Obavijest_OdKorisnikId",
-                table: "Obavijest",
+                name: "IX_Notifikacija_OdKorisnikId",
+                table: "Notifikacija",
                 column: "OdKorisnikId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Obavijest_TipObavijestiId",
-                table: "Obavijest",
-                column: "TipObavijestiId");
+                name: "IX_Notifikacija_TipNotifikacijeId",
+                table: "Notifikacija",
+                column: "TipNotifikacijeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Obavijest_ZaKorisnikId",
-                table: "Obavijest",
+                name: "IX_Notifikacija_ZaKorisnikId",
+                table: "Notifikacija",
                 column: "ZaKorisnikId");
 
             migrationBuilder.CreateIndex(
@@ -552,6 +568,9 @@ namespace DonorCentar.WebAPI.Migrations
                 name: "Donor");
 
             migrationBuilder.DropTable(
+                name: "Notifikacija");
+
+            migrationBuilder.DropTable(
                 name: "Obavijest");
 
             migrationBuilder.DropTable(
@@ -567,7 +586,7 @@ namespace DonorCentar.WebAPI.Migrations
                 name: "Donacija");
 
             migrationBuilder.DropTable(
-                name: "TipObavijesti");
+                name: "TipNotifikacije");
 
             migrationBuilder.DropTable(
                 name: "Korisnik");

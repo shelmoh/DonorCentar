@@ -29,8 +29,6 @@ namespace DonorCentar.WinUI
             {
                 APIService.CurrentUser = await korisniciService.GetAll<Model.Korisnik>(null, "Profil");
 
-                if(APIService.CurrentUser!=null)
-                {
 
                
                 if (APIService.CurrentUser.Tip != "Administrator")
@@ -40,13 +38,13 @@ namespace DonorCentar.WinUI
                 }
 
                 DialogResult = DialogResult.OK;
-                }
-                else MessageBox.Show("Neispravni podaci za prijavu.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+                
 
             }
             catch (Exception)
             {
-
+                MessageBox.Show("Neispravni podaci za prijavu.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

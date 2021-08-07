@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace DonorCentar.Model
 {
-    public class TipObavijesti
+    public class TipNotifikacije
     {
-        public int TipObavijestiId { get; set; }
+        public int TipNotifikacijeId { get; set; }
         public string Obavijest { get; set; }
     }
 }
