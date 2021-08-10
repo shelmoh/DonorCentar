@@ -15,51 +15,54 @@ namespace DonorCentar.WinUI
     public partial class frmObavijesti : Form
     {
 
-        APIService korisniciService = new APIService("Korisnici");
+        APIService obavijestService = new APIService("Obavijest");
         public frmObavijesti()
         {
 
             InitializeComponent();
 
-            dgvKorisnici.AutoGenerateColumns = false;
+            dgvObavijesti.AutoGenerateColumns = false;
         }
 
-        private async void frmKorisnici_Load(object sender, EventArgs e)
+        private async void frmObavijest_Load(object sender, EventArgs e)
         {
-            await UcitajKorisnike();
+            await UcitajObavijesti();
         }
 
-        private async Task UcitajKorisnike()
+        private async Task UcitajObavijesti()
         {
-            KorisniciSearchRequest searchRequest = new KorisniciSearchRequest()
+            ObavijestSearchRequest searchRequest = new ObavijestSearchRequest
             {
-                ImePrezime = txtImePrezime.Text,
-                TipKorisnika= cmbTipKorisnika.Text
+                Naslov = txtNaslov.Text
             };
 
-            var list = await korisniciService.GetAll<List<Korisnik>>(searchRequest);
+            var list = await obavijestService.GetAll<List<Obavijest>>(searchRequest);
 
 
-            dgvKorisnici.DataSource = list;
+            dgvObavijesti.DataSource = list;
         }
 
-        private async void txtImePrezime_TextChanged(object sender, EventArgs e)
+        private async void txtNaslov_TextChanged(object sender, EventArgs e)
         {
-            await UcitajKorisnike();
+            await UcitajObavijesti();
 
         }
 
-        private async void cmbTipKorisnika_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            await UcitajKorisnike();
-        }
-
+        
         private async void btnUredi_Click(object sender, EventArgs e)
         {
-            var selektovani = dgvKorisnici.SelectedRows[0].DataBoundItem as Model.Korisnik;
-            frmKorisniciDetalji frm = new frmKorisniciDetalji(selektovani);
+            var selektovani = dgvObavijesti.SelectedRows[0].DataBoundItem as Model.Obavijest;
+            frmObavijestDetalji frm = new frmObavijestDetalji(selektovani);
             frm.ShowDialog();
-             await UcitajKorisnike();
+             await UcitajObavijesti();
+        }
+
+        private async void btnUkloni_Click(object sender, EventArgs e)
+        {
+            var selektovani = dgvObavijesti.SelectedRows[0].DataBoundItem as Model.Obavijest;
+
+            await obavijestService.Delete<Model.Obavijest>(selektovani.ObavijestId);
+            await UcitajObavijesti();
         }
     }
 }

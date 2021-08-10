@@ -51,5 +51,17 @@ namespace DonorCentar.WinUI
             frm.ShowDialog();
 
         }
+
+        private void prikazObavijestiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmObavijesti frm = new frmObavijesti();
+            frm.ShowDialog();
+        }
+
+        private void dodajObavijestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmObavijestDetalji frm = new frmObavijestDetalji();
+            frm.ShowDialog();
+        }
     }
 }

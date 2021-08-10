@@ -62,7 +62,6 @@ namespace DonorCentar.WinUI
             this.label1.Size = new System.Drawing.Size(107, 18);
             this.label1.TabIndex = 2;
             this.label1.Text = "Korisnicko ime";
-           
             // 
             // label2
             // 
@@ -87,6 +86,7 @@ namespace DonorCentar.WinUI
             // 
             // frmLogin
             // 
+            this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(488, 399);

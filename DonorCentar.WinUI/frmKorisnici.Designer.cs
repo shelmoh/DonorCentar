@@ -163,6 +163,7 @@ namespace DonorCentar.WinUI
             this.btnUkloni.TabIndex = 6;
             this.btnUkloni.Text = "Ukloni";
             this.btnUkloni.UseVisualStyleBackColor = true;
+            this.btnUkloni.Click += new System.EventHandler(this.btnUkloni_Click);
             // 
             // frmKorisnici
             // 

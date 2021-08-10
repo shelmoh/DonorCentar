@@ -60,6 +60,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIService.cs" />
+    <Compile Include="frmObavijestDetalji.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmObavijestDetalji.Designer.cs">
+      <DependentUpon>frmObavijestDetalji.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmObavijesti.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmObavijestDetalji.resx">
+      <DependentUpon>frmObavijestDetalji.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmObavijesti.resx">
       <DependentUpon>frmObavijesti.cs</DependentUpon>
     </EmbeddedResource>

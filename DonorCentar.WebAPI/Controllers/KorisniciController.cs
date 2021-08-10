@@ -50,5 +50,12 @@ namespace DonorCentar.WebAPI.Controllers
         {
             return _service.Profil();
         }
+
+
+        [HttpDelete("{id}")]
+        public Model.Korisnik Delete(int id)
+        {
+            return _service.Delete(id);
+        }
     }
 }

@@ -29,7 +29,7 @@ namespace DonorCentar.WebAPI.Services
 
         public IList<Korisnici> GetAll(KorisniciSearchRequest search)
         {
-            var query = Context.Korisnik.AsQueryable();
+            var query = Context.Korisnik.Where(x=>x.Izbrisan==false).AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(search?.ImePrezime))
             {
@@ -139,7 +139,7 @@ namespace DonorCentar.WebAPI.Services
 
         public async Task<Model.Korisnik> Login(string username, string password)
         {
-            var entity = await Context.Korisnik.Where(x => x.LoginPodaci.KorisnickoIme == username).Include(x => x.Grad.Kanton).Include(x => x.LicniPodaci).Include(x => x.TipKorisnika).Include(x => x.LoginPodaci).FirstOrDefaultAsync();
+            var entity = await Context.Korisnik.Where(x => x.Izbrisan == false).Where(x => x.LoginPodaci.KorisnickoIme == username).Include(x => x.Grad.Kanton).Include(x => x.LicniPodaci).Include(x => x.TipKorisnika).Include(x => x.LoginPodaci).FirstOrDefaultAsync();
 
 
             if (entity != null)
@@ -168,6 +168,23 @@ namespace DonorCentar.WebAPI.Services
                 return null;
 
             return _mapper.Map<Model.Korisnik>(query.FirstOrDefault(x => x.Id==LogiraniKorisnik.Id));
+        }
+
+
+        public Korisnici Delete(int id)
+        {
+            var entity = Context.Korisnik.Find(id);
+
+
+            
+            if (entity != null)
+            {
+
+                entity.Izbrisan = true;
+                Context.SaveChanges();
+            }
+
+            return _mapper.Map<Model.Korisnik>(entity);
         }
     }
 }

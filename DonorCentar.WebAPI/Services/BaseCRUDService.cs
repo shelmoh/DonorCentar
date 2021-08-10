@@ -38,5 +38,21 @@ namespace DonorCentar.WebAPI.Services
 
             return _mapper.Map<T>(entity);
         }
+
+        public virtual T Delete(int id)
+        {
+            var set = Context.Set<TDb>();
+
+            var entity = set.Find(id);
+
+            if (entity != null)
+            {
+                set.Remove(entity);
+
+                Context.SaveChanges();
+            }
+
+            return _mapper.Map<T>(entity);
+        }
     }
 }

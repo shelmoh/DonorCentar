@@ -92,5 +92,15 @@ namespace DonorCentar.WinUI
             }
 
         }
+
+        public async Task<T> Delete<T>(object id)
+        {
+            var url = $"{endpoint}{_resource}/{id}";
+
+            return await url.WithBasicAuth(Username, Password).DeleteAsync().ReceiveJson<T>();
+        }
     }
+
+
+   
 }

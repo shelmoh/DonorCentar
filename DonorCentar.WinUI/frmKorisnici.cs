@@ -61,5 +61,13 @@ namespace DonorCentar.WinUI
             frm.ShowDialog();
              await UcitajKorisnike();
         }
+
+        private async void btnUkloni_Click(object sender, EventArgs e)
+        {
+            var selektovani = dgvKorisnici.SelectedRows[0].DataBoundItem as Model.Korisnik;
+            await korisniciService.Delete<Model.Korisnik>(selektovani.Id);
+            await UcitajKorisnike();
+            
+        }
     }
 }

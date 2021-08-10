@@ -16,6 +16,7 @@ namespace DonorCentar.Model
         public int GradId { get; set; }
         public TipKorisnika TipKorisnika { get; set; }
         public int TipKorisnikaId { get; set; }
+        public bool Izbrisan { get; set; }
 
 
         public string Ime => LicniPodaci?.Ime;

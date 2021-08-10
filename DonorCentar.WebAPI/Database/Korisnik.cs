@@ -17,6 +17,8 @@ namespace DonorCentar.WebAPI.Database
         public TipKorisnika TipKorisnika { get; set; }
         public int TipKorisnikaId { get; set; }
 
+        public bool Izbrisan { get; set; }
+
 
     }
 }

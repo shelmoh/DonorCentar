@@ -34,7 +34,7 @@ namespace DonorCentar.WebAPI.Services
 
         public override IEnumerable<Model.Primalac> Get(PrimalacSearchRequest search)
         {
-            var query = Context.Primalac.AsQueryable();
+            var query = Context.Primalac.Where(x => x.Korisnik.Izbrisan == false).AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(search?.ImePrezime))
             {

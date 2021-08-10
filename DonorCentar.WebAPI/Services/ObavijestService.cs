@@ -16,5 +16,33 @@ namespace DonorCentar.WebAPI.Services
             : base(context, mapper)
         {
         }
+
+
+        public override IEnumerable<Model.Obavijest> Get(ObavijestSearchRequest search = null)
+        {
+
+            var query = Context.Obavijest.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(search?.Naslov))
+            {
+                search.Naslov = search.Naslov.ToLower();
+                query = query.Where(x => x.Naslov.ToLower().Contains(search.Naslov));
+            }
+
+           
+
+     
+
+            var entities = query.ToList();
+
+
+            var result = _mapper.Map<IList<Model.Obavijest>>(entities);
+
+
+
+            return result;
+        }
+
+
     }
 }

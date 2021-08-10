@@ -26,5 +26,11 @@ namespace DonorCentar.WebAPI.Controllers
         {
             return _crudService.Update(id, request);
         }
+
+        [HttpDelete("{id}")]
+        public T Delete(int id)
+        {
+            return _crudService.Delete(id);
+        }
     }
 }

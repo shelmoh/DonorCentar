@@ -21,5 +21,7 @@ namespace DonorCentar.WebAPI.Services
         void SetLogiraniKorisnik(Korisnik user);
 
         Model.Korisnik Profil();
+
+        Model.Korisnik Delete(int id);
     }
 }

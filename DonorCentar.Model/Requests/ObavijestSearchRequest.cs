@@ -6,5 +6,6 @@ namespace DonorCentar.Model.Requests
 {
     public class ObavijestSearchRequest
     {
+        public string Naslov { get; set; }
     }
 }
