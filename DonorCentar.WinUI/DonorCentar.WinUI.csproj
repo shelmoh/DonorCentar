@@ -78,6 +78,12 @@
     <Compile Include="frmMojProfil.Designer.cs">
       <DependentUpon>frmMojProfil.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPrikaziDokument.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrikaziDokument.Designer.cs">
+      <DependentUpon>frmPrikaziDokument.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmVerifikacija.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMojProfil.resx">
       <DependentUpon>frmMojProfil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrikaziDokument.resx">
+      <DependentUpon>frmPrikaziDokument.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmVerifikacija.resx">
       <DependentUpon>frmVerifikacija.cs</DependentUpon>

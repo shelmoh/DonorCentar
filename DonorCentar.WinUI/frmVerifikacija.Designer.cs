@@ -30,9 +30,6 @@ namespace DonorCentar.WinUI
         private void InitializeComponent()
         {
             this.dgvKorisnici = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtImePrezime = new System.Windows.Forms.TextBox();
-            this.btnVerifikuj = new System.Windows.Forms.Button();
             this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,6 +37,9 @@ namespace DonorCentar.WinUI
             this.Tip = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DokumentVerifikacije = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Verifikovan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtImePrezime = new System.Windows.Forms.TextBox();
+            this.btnVerifikuj = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKorisnici)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,33 +63,7 @@ namespace DonorCentar.WinUI
             this.dgvKorisnici.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvKorisnici.Size = new System.Drawing.Size(669, 283);
             this.dgvKorisnici.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(294, 61);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Ime primaoca";
-            // 
-            // txtImePrezime
-            // 
-            this.txtImePrezime.Location = new System.Drawing.Point(420, 61);
-            this.txtImePrezime.Name = "txtImePrezime";
-            this.txtImePrezime.Size = new System.Drawing.Size(121, 20);
-            this.txtImePrezime.TabIndex = 2;
-            this.txtImePrezime.TextChanged += new System.EventHandler(this.txtImePrezime_TextChanged);
-            // 
-            // btnVerifikuj
-            // 
-            this.btnVerifikuj.Location = new System.Drawing.Point(366, 439);
-            this.btnVerifikuj.Name = "btnVerifikuj";
-            this.btnVerifikuj.Size = new System.Drawing.Size(75, 23);
-            this.btnVerifikuj.TabIndex = 3;
-            this.btnVerifikuj.Text = "Verifikuj";
-            this.btnVerifikuj.UseVisualStyleBackColor = true;
-            this.btnVerifikuj.Click += new System.EventHandler(this.btnVerifikuj_Click);
+            this.dgvKorisnici.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKorisnici_CellContentClick);
             // 
             // Ime
             // 
@@ -146,6 +120,33 @@ namespace DonorCentar.WinUI
             this.Verifikovan.HeaderText = "Verifikovan";
             this.Verifikovan.Name = "Verifikovan";
             this.Verifikovan.ReadOnly = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(294, 61);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Ime primaoca";
+            // 
+            // txtImePrezime
+            // 
+            this.txtImePrezime.Location = new System.Drawing.Point(420, 61);
+            this.txtImePrezime.Name = "txtImePrezime";
+            this.txtImePrezime.Size = new System.Drawing.Size(121, 20);
+            this.txtImePrezime.TabIndex = 2;
+            this.txtImePrezime.TextChanged += new System.EventHandler(this.txtImePrezime_TextChanged);
+            // 
+            // btnVerifikuj
+            // 
+            this.btnVerifikuj.Location = new System.Drawing.Point(366, 439);
+            this.btnVerifikuj.Name = "btnVerifikuj";
+            this.btnVerifikuj.Size = new System.Drawing.Size(75, 23);
+            this.btnVerifikuj.TabIndex = 3;
+            this.btnVerifikuj.Text = "Verifikuj";
+            this.btnVerifikuj.UseVisualStyleBackColor = true;
+            this.btnVerifikuj.Click += new System.EventHandler(this.btnVerifikuj_Click);
             // 
             // frmVerifikacija
             // 

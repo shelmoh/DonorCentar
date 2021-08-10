@@ -33,7 +33,7 @@ namespace DonorCentar.WinUI
         {
             PrimalacSearchRequest searchRequest = new PrimalacSearchRequest()
             {
-                ImePrezime = txtImePrezime.Text,
+                ImePrezime = txtImePrezime.Text
                 
                 
             };
@@ -68,6 +68,17 @@ namespace DonorCentar.WinUI
             await UcitajKorisnike();
         }
 
-        
+        private void dgvKorisnici_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.ColumnIndex==5)
+            {
+                var selektovani = dgvKorisnici.SelectedRows[0].DataBoundItem as Model.Primalac;
+                var frm = new frmPrikaziDokument(selektovani);
+                frm.ShowDialog();
+            }
+              
+
+
+        }
     }
 }
