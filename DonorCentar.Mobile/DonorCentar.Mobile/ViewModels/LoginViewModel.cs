@@ -1,4 +1,5 @@
-﻿using DonorCentar.Mobile.Views;
+﻿using DonorCentar.Mobile.Validators;
+using DonorCentar.Mobile.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,6 +10,43 @@ namespace DonorCentar.Mobile.ViewModels
     public class LoginViewModel : BaseViewModel
     {
         public Command LoginCommand { get; }
+        private ValidatableObject<string> email;
+        private ValidatableObject<string> password;
+
+        public ValidatableObject<string> Password
+        {
+            get
+            {
+                return this.password;
+            }
+
+            set
+            {
+                if (this.password == value)
+                {
+                    return;
+                }
+
+                this.SetProperty(ref this.password, value);
+            }
+        }
+        public ValidatableObject<string> Email
+        {
+            get
+            {
+                return this.email;
+            }
+
+            set
+            {
+                if (this.email == value)
+                {
+                    return;
+                }
+
+                this.SetProperty(ref this.email, value);
+            }
+        }
 
         public LoginViewModel()
         {
