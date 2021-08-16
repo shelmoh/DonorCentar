@@ -32,6 +32,25 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\DonorCentar.Model\DonorCentar.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\MojeDonacijePage.xaml.cs">
+      <DependentUpon>MojeDonacijePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PotrebaPage.xaml.cs">
+      <DependentUpon>PotrebaPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\DonirajPage.xaml.cs">
+      <DependentUpon>DonirajPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\RegisterPage.xaml.cs">
+      <DependentUpon>RegisterPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Update="Styles\AvatarViewStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

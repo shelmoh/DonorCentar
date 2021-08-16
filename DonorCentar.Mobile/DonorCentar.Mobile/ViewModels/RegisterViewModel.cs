@@ -8,16 +8,16 @@ using Xamarin.Forms;
 
 namespace DonorCentar.Mobile.ViewModels
 {
-    public class LoginViewModel : BaseViewModel
+    public class RegisterViewModel : BaseViewModel
     {
-        public Command LoginCommand { get; }
+        
         private ValidatableObject<string> email;
         private ValidatableObject<string> password;
-        public ICommand RegisterCommand => new Command(OnRegister);
+        public ICommand LoginCommand => new Command(OnLogin);
 
-        private void OnRegister()
+        private void OnLogin()
         {
-            Application.Current.MainPage = new RegisterPage();
+            Application.Current.MainPage = new LoginPage();
         }
 
         public ValidatableObject<string> Password
@@ -55,10 +55,7 @@ namespace DonorCentar.Mobile.ViewModels
             }
         }
 
-        public LoginViewModel()
-        {
-            LoginCommand = new Command(OnLoginClicked);
-        }
+       
 
         private void OnLoginClicked(object obj)
         {
