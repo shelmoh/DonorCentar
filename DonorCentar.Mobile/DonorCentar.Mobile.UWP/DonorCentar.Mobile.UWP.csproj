@@ -105,7 +105,9 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="edit.png" />
     <Content Include="infologo.png" />
+    <Content Include="kanta.jpg" />
     <Content Include="logo.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LargeTile.scale-100.png" />

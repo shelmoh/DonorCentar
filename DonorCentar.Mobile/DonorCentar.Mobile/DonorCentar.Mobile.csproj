@@ -36,6 +36,27 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\PrimljeneDonacijePage.xaml.cs">
+      <DependentUpon>PrimljeneDonacijePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ObavijestiPage.xaml.cs">
+      <DependentUpon>ObavijestiPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PartneriPage .xaml.cs">
+      <DependentUpon>PartneriPage .xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PrimaociPage.xaml.cs">
+      <DependentUpon>PrimaociPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\MojePotrebePage.xaml.cs">
+      <DependentUpon>MojePotrebePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\DonirajPotrebuPage.xaml.cs">
+      <DependentUpon>DonirajPotrebuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\DonacijeBezTransportaPage.xaml.cs">
+      <DependentUpon>DonacijeBezTransportaPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\MojeDonacijePage.xaml.cs">
       <DependentUpon>MojeDonacijePage.xaml</DependentUpon>
     </Compile>
@@ -44,6 +65,9 @@
     </Compile>
     <Compile Update="Views\DonirajPage.xaml.cs">
       <DependentUpon>DonirajPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\MojProfilPage.xaml.cs">
+      <DependentUpon>MojProfilPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>

@@ -10,16 +10,14 @@ using Xamarin.Forms.Xaml;
 namespace DonorCentar.Mobile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PotrebaPage : ContentPage
+    public partial class PrimljeneDonacijePage : ContentPage
     {
-        public PotrebaPage()
+        public PrimljeneDonacijePage()
         {
 
             InitializeComponent();
-            this.BindingContext = new RegisterViewModel();
+            this.BindingContext = new PrimljeneDonacijeViewModel();
             
         }
     }
 }
-
-
