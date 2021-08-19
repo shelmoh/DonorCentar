@@ -10,5 +10,10 @@ namespace DonorCentar.Model
         public string Naziv { get; set; }
         public Kanton Kanton { get; set; }
         public int KantonId { get; set; }
+
+        public override string ToString()
+        {
+            return Naziv.ToString();
+        }
     }
 }

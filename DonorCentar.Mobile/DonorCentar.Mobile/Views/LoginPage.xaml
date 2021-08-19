@@ -24,7 +24,7 @@
             <Label Text="DonorCentar" HorizontalOptions="Center" TextColor="Gray"/>
             <Label Text="Prijavi se" FontSize="30"/>
             <Label Text="Zdravo! Lijepo vas je opet vidjeti."  TextColor="Gray"/>
-            <Label Margin="0,20,0,0" Text="Email"  TextColor="DarkOrange"/>
+            <Label Margin="0,20,0,0" Text="Korisnicko ime"  TextColor="DarkOrange"/>
 
             <Grid ColumnDefinitions="*, Auto">
 
@@ -33,12 +33,12 @@
                                        
                                         HeightRequest="35"
                                        
-                                        Placeholder="donor@email.com"
+                                        Placeholder="korisnickoime"
                                         FontSize="15"
                                         Style="{StaticResource BorderlessEntryStyle}"
-                                        Text="{Binding Email.Value}">
+                                        Text="{Binding KorisnickoIme.Value}">
                     <Entry.Behaviors>
-                        <behaviour:EntryLineValidationBehaviour IsValid="{Binding Email.IsValid}" />
+                        <behaviour:EntryLineValidationBehaviour IsValid="{Binding KorisnickoIme.IsValid}" />
                     </Entry.Behaviors>
                 </control:BorderlessEntry>
 

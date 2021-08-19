@@ -92,7 +92,7 @@ namespace DonorCentar.Mobile.ViewModels
         /// <returns>Returns the fields are valid or not</returns>
         public bool AreFieldsValid()
         {
-            bool isEmailValid = this.Email.Validate();
+            bool isEmailValid = this.KorisnickoIme.Validate();
             bool isPasswordValid = this.Password.Validate();
             return isEmailValid && isPasswordValid;
         }

@@ -8,5 +8,10 @@ namespace DonorCentar.Model
     {
         public int Id { get; set; }
         public string Tip { get; set; }
+
+        public override string ToString()
+        {
+            return Tip.ToString();
+        }
     }
 }
