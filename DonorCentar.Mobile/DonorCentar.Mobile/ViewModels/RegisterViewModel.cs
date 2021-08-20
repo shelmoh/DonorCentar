@@ -87,7 +87,16 @@ namespace DonorCentar.Mobile.ViewModels
                 APIService.Username = korisnickoime.Value;
                 APIService.Password = password.Value;
                 APIService.Korisnik = entity;
-                Application.Current.MainPage = new AppShell();
+
+                if (APIService.Korisnik.Tip == "Donor")
+                    Application.Current.MainPage = new AppShellDonor();
+
+                if (APIService.Korisnik.Tip == "Primalac")
+                    Application.Current.MainPage = new AppShellPrimalac();
+
+                if (APIService.Korisnik.Tip == "Partner")
+                    Application.Current.MainPage = new AppShellPartner();
+              
             }
 
         }
@@ -257,11 +266,6 @@ namespace DonorCentar.Mobile.ViewModels
         #endregion 
 
 
-        private void OnLoginClicked(object obj)
-        {
-            
-            Application.Current.MainPage = new AppShell();
-
-        }
+       
     }
 }

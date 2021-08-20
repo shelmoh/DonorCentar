@@ -29,7 +29,7 @@
     <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="19.2.0.55" />
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="19.2.0.55" />
     <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="19.2.0.55" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />  
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2083" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
   </ItemGroup>
 
@@ -38,6 +38,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="AppShellPrimalac.xaml.cs">
+      <DependentUpon>AppShellPrimalac.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="AppShellDonor.xaml.cs">
+      <DependentUpon>AppShellDonor.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="AppShellPartner.xaml.cs">
+      <DependentUpon>AppShellPartner.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\PrimljeneDonacijePage.xaml.cs">
       <DependentUpon>PrimljeneDonacijePage.xaml</DependentUpon>
     </Compile>

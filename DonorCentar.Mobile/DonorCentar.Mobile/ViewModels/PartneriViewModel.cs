@@ -62,7 +62,6 @@ namespace DonorCentar.Mobile.ViewModels
         private void OnInfoClicked(Partner obj)
         {
             
-            Application.Current.MainPage = new AppShell();
 
         }
     }

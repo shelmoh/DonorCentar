@@ -78,7 +78,7 @@ namespace DonorCentar.Mobile.ViewModels
         private void OnLoginClicked(object obj)
         {
             
-            Application.Current.MainPage = new AppShell();
+            
 
         }
     }

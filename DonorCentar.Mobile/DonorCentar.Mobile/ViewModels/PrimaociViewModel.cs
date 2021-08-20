@@ -54,7 +54,6 @@ namespace DonorCentar.Mobile.ViewModels
         private void OnInfoClicked(Primalac obj)
         {
             
-            Application.Current.MainPage = new AppShell();
 
         }
     }
