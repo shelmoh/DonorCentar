@@ -81,7 +81,7 @@ namespace DonorCentar.WebAPI
 
             services.AddScoped<IObavijestService, ObavijestService>();
 
-
+            services.AddScoped<IDonacijaService, DonacijaService>();
 
 
             services.AddAuthentication("BasicAuthentication")

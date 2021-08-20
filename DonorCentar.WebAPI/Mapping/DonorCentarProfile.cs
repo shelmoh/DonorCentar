@@ -38,7 +38,10 @@ namespace DonorCentar.WebAPI.Mapping
 
             CreateMap<ObavijestUpdateRequest, Database.Obavijest>().ReverseMap();
             CreateMap<ObavijestInsertRequest, Database.Obavijest>().ReverseMap();
-   
+
+           
+            CreateMap<DonacijaInsertRequest, Database.Donacija>().ReverseMap();
+
 
         }
 

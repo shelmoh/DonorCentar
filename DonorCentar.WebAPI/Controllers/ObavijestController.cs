@@ -9,10 +9,7 @@ using System.Threading.Tasks;
 
 namespace DonorCentar.WebAPI.Controllers
 {
-   
-   
-
-        public class ObavijestController : BaseCRUDController<Model.Obavijest, ObavijestSearchRequest, ObavijestInsertRequest, ObavijestUpdateRequest>
+    public class ObavijestController : BaseCRUDController<Model.Obavijest, ObavijestSearchRequest, ObavijestInsertRequest, ObavijestUpdateRequest>
         {
             public ObavijestController(IObavijestService service) : base(service)
             {
