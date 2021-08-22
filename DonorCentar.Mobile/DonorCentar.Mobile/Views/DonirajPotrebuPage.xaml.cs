@@ -12,12 +12,20 @@ namespace DonorCentar.Mobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DonirajPotrebuPage : ContentPage
     {
+        private DonirajPotrebuViewModel model;
+
         public DonirajPotrebuPage()
         {
 
             InitializeComponent();
-            this.BindingContext = new DonirajPotrebuViewModel();
+            this.BindingContext = model =  new DonirajPotrebuViewModel();
             
+        }
+
+
+        protected async override void OnAppearing()
+        {
+            await model.Init();
         }
     }
 }

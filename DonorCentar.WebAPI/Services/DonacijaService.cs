@@ -40,8 +40,15 @@ namespace DonorCentar.WebAPI.Services
                 query = query.Where(x => x.PrimalacId==search.PrimalacId);
             }
 
+            if (search?.DonorId != null)
+            {
+                query = query.Where(x => x.DonorId == search.DonorId);
+            }
 
-
+            if (search?.PartnerId != null)
+            {
+                query = query.Where(x => x.TransportId == search.PartnerId);
+            }
 
 
             var entities = query.ToList();

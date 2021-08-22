@@ -9,5 +9,7 @@ namespace DonorCentar.Model.Requests
         public string Tip { get; set; }
         public string Vrsta { get; set; }
         public int? PrimalacId { get; set; }
+        public int? DonorId { get; set; }
+        public int? PartnerId { get; set; }
     }
 }

@@ -28,7 +28,7 @@
                 <Label Margin="0,10,0,10" Text="Potrebe" FontSize="30" HorizontalOptions="Center"/>
 
 
-                <SearchBar Margin="0,10,0,10" BackgroundColor="LightGray"  Placeholder="Pretraži potrebe" HorizontalTextAlignment="Center"/>
+                <SearchBar Text="{Binding Pretraga}" Margin="0,10,0,10" BackgroundColor="LightGray"  Placeholder="Pretraži potrebe" HorizontalTextAlignment="Center"/>
                 <CollectionView x:Name="ItemsListView"
                 ItemsSource="{Binding Donacije}"
                 SelectionMode="None">
@@ -36,38 +36,52 @@
                         <DataTemplate>
 
                             <Grid x:DataType="model:Donacija" Padding="10">
-                                <Grid.RowDefinitions>
-                                    
-                                    <RowDefinition Height="40" />
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
+                                
 
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
+                                    <Grid.RowDefinitions>
 
-                                </Grid.ColumnDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
 
-                                <StackLayout VerticalOptions="Center" Grid.Column="0" Orientation="Horizontal">
-                                    <Label Text="{Binding TipDonacije.Tip}" 
+                                        <ColumnDefinition Width="7*" />
+                                        <ColumnDefinition Width="*" />
+
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+
+                                    </Grid.ColumnDefinitions>
+
+                              
+                                <StackLayout Orientation="Horizontal">
+
+
+                                    <Label  Grid.Column="0" VerticalOptions="Center"
                             LineBreakMode="NoWrap" 
                             Style="{DynamicResource ListItemTextStyle}" 
-                            FontSize="16" />
-                                    <Label Text="-" LineBreakMode="NoWrap" 
-                            Style="{DynamicResource ListItemTextStyle}" 
-                            FontSize="16"></Label>
-                                    <Label Text="{Binding Donor.Grad.Naziv}" 
-                            LineBreakMode="NoWrap" 
-                            Style="{DynamicResource ListItemTextStyle}" 
-                            FontSize="16" />
+                            FontSize="16">
+                                        <Label.FormattedText >
+                                            <FormattedString>
+                                                <FormattedString.Spans>
+                                                    <Span Text="{Binding TipDonacije.Tip}"/>
+                                                    <Span Text=" - "/>
+                                                    
+                                                    <Span Text="{Binding Primalac.Ime}"/>
+                                                    <Span Text=" "/>
+                                                    <Span Text="{Binding Primalac.Prezime}"/>
+
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
                                 </StackLayout>
-
 
                                 <ImageButton Grid.Column="1" Source="infologo.png"  HeightRequest="40" Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:DonirajPotrebuViewModel}}, Path=InfoCommand}" CommandParameter="{Binding .}"/>
 
-                                <Button  Grid.Column="2" Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:DonirajPotrebuViewModel}}, Path=UkloniCommand}" CommandParameter="{Binding .}"  Text="Doniraj" TextColor="White" BackgroundColor="DarkOrange"/>
-                                <BoxView Grid.Row="1" Grid.ColumnSpan="3" Margin="0,3,0,0" HeightRequest="1" BackgroundColor="LightGray" CornerRadius="10"/>
+                                <Button WidthRequest="80" Margin="0,0,0,0" Grid.Column="3" Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:DonirajPotrebuViewModel}}, Path=UkloniCommand}" CommandParameter="{Binding .}"  Text="Doniraj" TextColor="White" BackgroundColor="DarkOrange"/>
+                                <BoxView Grid.Row="1" Grid.ColumnSpan="4" Margin="0,3,0,0" HeightRequest="1" BackgroundColor="LightGray" CornerRadius="10"/>
                            </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>

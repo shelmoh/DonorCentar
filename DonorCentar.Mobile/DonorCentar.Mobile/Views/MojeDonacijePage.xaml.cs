@@ -12,12 +12,19 @@ namespace DonorCentar.Mobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MojeDonacijePage : ContentPage
     {
+        private MojeDonacijeViewModel model;
+
         public MojeDonacijePage()
         {
 
             InitializeComponent();
-            this.BindingContext = new MojeDonacijeViewModel();
+            this.BindingContext = model= new MojeDonacijeViewModel();
             
+        }
+
+        protected async override void OnAppearing()
+        {
+            await model.Init();
         }
     }
 }
