@@ -12,12 +12,19 @@ namespace DonorCentar.Mobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PrimaociPage : ContentPage
     {
+        private PrimaociViewModel model;
+
         public PrimaociPage()
         {
 
             InitializeComponent();
-            this.BindingContext = new PrimaociViewModel();
+            this.BindingContext= model = new PrimaociViewModel();
             
+        }
+
+        protected async override void OnAppearing()
+        {
+            await model.Init();
         }
     }
 }

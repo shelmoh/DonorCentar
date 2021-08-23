@@ -79,8 +79,43 @@ namespace DonorCentar.WebAPI.Services
 
 
             entity.LoginPodaci.Sifra = HashSifru(request.LoginPodaci.Sifra);
-                
 
+            var uloga = Context.TipKorisnika.Find(request.TipKorisnikaId);
+            if(uloga!=null)
+            {
+                if(uloga.Tip=="Partner")
+                {
+                    var partner = new Partner
+                    {
+                        Korisnik = entity,
+                        DatumRegistracije = DateTime.Now
+                    };
+
+                    Context.Add(partner);
+                }
+
+                if (uloga.Tip == "Primalac")
+                {
+                    var Primalac = new Primalac
+                    {
+                        Korisnik = entity,
+                        DatumRegistracije = DateTime.Now
+                    };
+
+                    Context.Add(Primalac);
+                }
+
+                if (uloga.Tip == "Donor")
+                {
+                    var Donor = new Donor
+                    {
+                        Korisnik = entity,
+                        DatumRegistracije = DateTime.Now
+                    };
+
+                    Context.Add(Donor);
+                }
+            }
 
         
 

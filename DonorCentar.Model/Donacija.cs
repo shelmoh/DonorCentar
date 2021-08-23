@@ -43,5 +43,7 @@ namespace DonorCentar.Model
 
         public InformacijeTransporta Informacije { get; set; }
         public int? InformacijeId { get; set; }
+
+        public bool IsDonirano => DonorId != null;
     }
 }

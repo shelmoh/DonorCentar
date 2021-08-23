@@ -18,11 +18,19 @@ namespace DonorCentar.Mobile.ViewModels
         public ObservableCollection<Donacija> Donacije { get; set; } = new ObservableCollection<Donacija>();
         public ICommand InfoCommand { get; }
        
-        public ICommand UkloniCommand { get; }
+        public ICommand DonirajCommand { get; }
 
-        private void OnUkloniClicked(Donacija obj)
+        private async void OnDonirajClicked(Donacija obj)
         {
-            Application.Current.MainPage = new RegisterPage();
+            obj.DonorId = APIService.Korisnik.Id;
+            var entity = await _servicedonacija.Update<Donacija>(obj.DonacijaId, obj);
+
+            if (entity != null)
+                await UcitajPotrebe();
+
+           
+
+            
         }
 
         public ICommand UcitajCommand { get; }
@@ -49,7 +57,7 @@ namespace DonorCentar.Mobile.ViewModels
         public DonirajPotrebuViewModel()
         {
             InfoCommand = new Command<Donacija>(OnInfoClicked);
-            UkloniCommand = new Command<Donacija>(OnUkloniClicked);
+            DonirajCommand = new Command<Donacija>(OnDonirajClicked);
             UcitajCommand = new Command(async () => await UcitajPotrebe());
 
 

@@ -59,13 +59,13 @@
 
                                     <Label  Grid.Column="0" VerticalOptions="Center"
                             LineBreakMode="NoWrap" 
-                            Style="{DynamicResource ListItemTextStyle}" 
+                            
                             FontSize="16">
                                         <Label.FormattedText >
                                             <FormattedString>
                                                 <FormattedString.Spans>
-                                                    <Span Text="{Binding TipDonacije.Tip}"/>
-                                                    <Span Text=" - "/>
+                                                    <Span FontAttributes="Bold" FontSize="17" Text="{Binding TipDonacije.Tip}"/>
+                                                    <Span Text=" / "/>
                                                     
                                                     <Span Text="{Binding Primalac.Ime}"/>
                                                     <Span Text=" "/>
@@ -77,10 +77,12 @@
                                     </Label>
 
                                 </StackLayout>
-
+                                
                                 <ImageButton Grid.Column="1" Source="infologo.png"  HeightRequest="40" Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:DonirajPotrebuViewModel}}, Path=InfoCommand}" CommandParameter="{Binding .}"/>
 
-                                <Button WidthRequest="80" Margin="0,0,0,0" Grid.Column="3" Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:DonirajPotrebuViewModel}}, Path=UkloniCommand}" CommandParameter="{Binding .}"  Text="Doniraj" TextColor="White" BackgroundColor="DarkOrange"/>
+                                <Button IsVisible="{Binding IsDonirano, Converter={StaticResource InverseBoolConverter}}" WidthRequest="80" Margin="0,0,0,0" Grid.Column="3" Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:DonirajPotrebuViewModel}}, Path=DonirajCommand}" CommandParameter="{Binding .}"  Text="Doniraj" TextColor="White" BackgroundColor="DarkOrange"/>
+                                <Button IsVisible="{Binding IsDonirano}" WidthRequest="80" Margin="0,0,0,0" Grid.Column="3"  Text="Donirano!" TextColor="White" BackgroundColor="LightGreen"/>
+
                                 <BoxView Grid.Row="1" Grid.ColumnSpan="4" Margin="0,3,0,0" HeightRequest="1" BackgroundColor="LightGray" CornerRadius="10"/>
                            </Grid>
                         </DataTemplate>

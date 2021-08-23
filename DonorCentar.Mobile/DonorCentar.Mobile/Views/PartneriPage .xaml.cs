@@ -12,12 +12,19 @@ namespace DonorCentar.Mobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PartneriPage : ContentPage
     {
+        private PartneriViewModel model;
+
         public PartneriPage()
         {
 
             InitializeComponent();
-            this.BindingContext = new PartneriViewModel();
+            this.BindingContext= model = new PartneriViewModel();
             
+        }
+
+        protected async override void OnAppearing()
+        {
+            await model.Init();
         }
     }
 }

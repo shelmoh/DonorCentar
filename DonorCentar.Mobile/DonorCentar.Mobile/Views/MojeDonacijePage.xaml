@@ -56,13 +56,13 @@
 
                                     <Label  Grid.Column="0" VerticalOptions="Center"
                             LineBreakMode="NoWrap" 
-                            Style="{DynamicResource ListItemTextStyle}" 
+                           
                             FontSize="16">
                                         <Label.FormattedText >
                                             <FormattedString>
                                                 <FormattedString.Spans>
-                                                    <Span Text="{Binding TipDonacije.Tip}"/>
-                                                    <Span Text=" - "/>
+                                                    <Span FontAttributes="Bold" FontSize="17" Text="{Binding TipDonacije.Tip}"/>
+                                                    <Span FontAttributes="Bold" FontSize="16" Text=" - "/>
                                                     <Span Text="{Binding Primalac.Ime}"/>
                                                     <Span Text=" "/>
                                                     <Span Text="{Binding Primalac.Prezime}"/>
