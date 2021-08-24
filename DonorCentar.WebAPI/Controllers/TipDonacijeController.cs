@@ -9,9 +9,9 @@ namespace DonorCentar.WebAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class TipDonacijeController : BaseReadController<Model.TipDonacije, object>
+    public class TipKorisnikaController : BaseReadController<Model.TipKorisnika, object>
     {
-        public TipDonacijeController(ITipDonacijeService service)
+        public TipKorisnikaController(ITipKorisnikaService service)
             : base(service)
         {
         }

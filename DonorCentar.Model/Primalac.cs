@@ -20,5 +20,10 @@ namespace DonorCentar.Model
         public string Email => Korisnik?.Email;
         public string GradNaziv => Korisnik?.GradNaziv;
         public string Tip => Korisnik?.Tip;
+
+        public override string ToString()
+        {
+            return Ime +" "+ Prezime; 
+        }
     }
 }

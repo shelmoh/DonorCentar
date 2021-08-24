@@ -14,13 +14,11 @@
             <converter:NameValidationConverter x:Key="FirstValidationErrorConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ContentPage.BindingContext>
-        <viewModel:RegisterViewModel />
-    </ContentPage.BindingContext>
+ 
 
 
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView x:DataType="viewModel:DonacijaViewModel">
             <StackLayout Padding="30,20,30,0">
                 <Image Source="logo.png" HeightRequest="90"/>
                 <Label Text="DonorCentar" HorizontalOptions="Center" TextColor="Gray"/>
@@ -34,6 +32,15 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+
+                        <RowDefinition Height="Auto" />
+
+                        <RowDefinition Height="Auto" />
+
 
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -44,20 +51,20 @@
                     <Label  Text="Tip donacije"  TextColor="DarkOrange"/>
 
 
-                    <combobox:SfComboBox Margin="0,0,0,30"  Grid.Column="1" BorderColor="DarkOrange" TextColor="DarkOrange" >
+                    <combobox:SfComboBox  DataSource="{Binding TipoviDonacija}"  SelectedItem="{Binding TipDonacije}" Margin="0,0,0,30"  Grid.Column="1" BorderColor="DarkOrange" TextColor="DarkOrange" >
                     </combobox:SfComboBox>
 
 
                     <Label Grid.Row="1"  Grid.Column="0" Text="Primalac"  TextColor="DarkOrange"/>
 
 
-                    <combobox:SfComboBox Margin="0,0,0,30" Grid.Row="1"  Grid.Column="1" BorderColor="DarkOrange" TextColor="DarkOrange" >
+                    <combobox:SfComboBox DataSource="{Binding Primaoci}"  SelectedItem="{Binding Primalac}" Margin="0,0,0,30" Grid.Row="1"  Grid.Column="1" BorderColor="DarkOrange" TextColor="DarkOrange" >
                     </combobox:SfComboBox>
 
 
                     <Label Grid.Row="2"  Grid.Column="0" Text="Transport"  TextColor="DarkOrange"/>
 
-                    <CheckBox Margin="0,0,0,30" WidthRequest="20"  Color="DarkOrange" HorizontalOptions="Center" Grid.Row="2"  Grid.Column="1"></CheckBox>
+                    <CheckBox IsChecked="{Binding Transport}" Margin="0,0,0,30" WidthRequest="20"  Color="DarkOrange" HorizontalOptions="Center" Grid.Row="2"  Grid.Column="1"></CheckBox>
 
                     <Label Grid.Row="3"  Grid.Column="0" Text="Opis donacije"  TextColor="DarkOrange"/>
 
@@ -69,18 +76,38 @@
                                         
                                         FontSize="15"
                                         Style="{StaticResource BorderlessEntryStyle}"
-                                        Text="{Binding OpisDonacije.Value}">
-                        <Entry.Behaviors>
-                            <behaviour:EntryLineValidationBehaviour IsValid="{Binding Password.IsValid}" />
-                        </Entry.Behaviors>
+                                        Text="{Binding Donacija.Opis}">
+                        
                     </control:BorderlessEntry>
-                    <BoxView Grid.Row="5" Grid.ColumnSpan="2" Margin="0,-2,0,0" HeightRequest="1" BackgroundColor="LightGray" CornerRadius="10"/>
+                    <BoxView Grid.Row="5" Grid.ColumnSpan="2" Margin="0,-2,0,10" HeightRequest="2" BackgroundColor="LightGray" CornerRadius="10"/>
+
+                    <Label Grid.Row="6"    Grid.Column="0" Text="Količina"  TextColor="DarkOrange"/>
+
+                    <control:BorderlessEntry Grid.Row="7" Grid.Column="0"
+                                       
+                                       
+                                        HeightRequest="35"
+                                        
+                                        
+                                        FontSize="15"
+                                        Style="{StaticResource BorderlessEntryStyle}"
+                                        Text="{Binding Donacija.Kolicina}">
+                        
+                    </control:BorderlessEntry>
+                    <BoxView Grid.Row="8" Margin="0,-2,0,0" Grid.ColumnSpan="1"  HeightRequest="1" BackgroundColor="LightGray" CornerRadius="10"/>
+
+                    <Label Grid.Row="6" Margin="30,0,0,0" Grid.Column="1" Text="Jedinica mjere"  TextColor="DarkOrange"/>
+
+                   
+
+                        <combobox:SfComboBox DataSource="{Binding JediniceMjere}"  SelectedItem="{Binding JedinicaMjere}" Margin="30,0,0,0" Grid.Row="7"  Grid.Column="1" BorderColor="DarkOrange" TextColor="DarkOrange" >
+                        </combobox:SfComboBox>
 
                 </Grid>
 
                 
 
-                <Button Margin="100,20,100,0" CornerRadius="4" BackgroundColor="DarkOrange" VerticalOptions="Center" Text="Spremi" Command="{Binding LoginCommand}"/>
+                <Button Margin="100,20,100,0" CornerRadius="4" BackgroundColor="DarkOrange" VerticalOptions="Center" Text="Spremi" Command="{Binding DonirajCommand}"/>
                 
                    
             </StackLayout>

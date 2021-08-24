@@ -9,5 +9,10 @@ namespace DonorCentar.Model
     {
         public int TipDonacijeId { get; set; }
         public string Tip { get; set; }
+
+        public override string ToString()
+        {
+            return Tip.ToString();
+        }
     }
 }
