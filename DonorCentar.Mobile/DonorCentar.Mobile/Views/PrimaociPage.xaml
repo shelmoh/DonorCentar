@@ -42,10 +42,10 @@
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
 
+                                    <ColumnDefinition Width="3*" />
                                     <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*" />
 
-                                    <ColumnDefinition Width="95" />
+                                    <ColumnDefinition Width="Auto" />
                                    
 
                                 </Grid.ColumnDefinitions>
@@ -72,9 +72,10 @@
                                 </StackLayout>
 
 
+                                <ImageButton Margin="0,0,0,0" Grid.Column="2" Source="infologo.png"  HeightRequest="40" Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:PrimaociViewModel}}, Path=InfoCommand}" CommandParameter="{Binding .}"/>
 
-                                <Button FontAttributes="Bold" CornerRadius="3" Grid.Column="2" IsVisible="{Binding Verifikovan}"  Text="Verifikovan" TextColor="White" BackgroundColor="ForestGreen"/>
-                                <BoxView Grid.Row="1" Grid.ColumnSpan="3" Margin="0,3,0,0" HeightRequest="1" BackgroundColor="LightGray" CornerRadius="10"/>
+                                <Button FontAttributes="Bold" CornerRadius="3" Grid.Column="3" IsVisible="{Binding Verifikovan}"  Text="Verifikovan" TextColor="White" BackgroundColor="ForestGreen"/>
+                                <BoxView Grid.Row="1" Grid.ColumnSpan="4" Margin="0,3,0,0" HeightRequest="1" BackgroundColor="LightGray" CornerRadius="10"/>
                            </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>

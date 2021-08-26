@@ -61,6 +61,18 @@ namespace DonorCentar.WebAPI.Services
             return result;
         }
 
+        public override Model.Donacija GetById(int id)
+        {
+            var query = Context.Donacija.AsQueryable();
+            query = query.Include(x => x.TipDonacije).Include(x => x.Donor.LicniPodaci).Include(x => x.Informacije).Include(x => x.Primalac.LicniPodaci).Include(x => x.Status).Include(x => x.Transport.LicniPodaci).Include(x => x.VrstaDonacije);
+
+            query = query.Where(x => x.DonacijaId == id);
+
+            var entity = query.FirstOrDefault();
+
+
+            return _mapper.Map<Model.Donacija>(entity);
+        }
 
     }
 }

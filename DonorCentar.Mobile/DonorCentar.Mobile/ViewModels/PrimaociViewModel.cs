@@ -68,9 +68,13 @@ namespace DonorCentar.Mobile.ViewModels
 
 
         }
-        private void OnInfoClicked(Primalac obj)
+        private async void OnInfoClicked(Primalac obj)
         {
-            
+            if (obj == null)
+                return;
+
+
+            await Shell.Current.GoToAsync($"{nameof(InfoPrimaociPage)}?{nameof(InfoPrimaociViewModel.PrimalacId)}={obj.Id}");
 
         }
     }

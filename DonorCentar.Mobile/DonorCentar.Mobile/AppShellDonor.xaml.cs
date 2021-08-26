@@ -13,17 +13,21 @@ namespace DonorCentar.Mobile
         public AppShellDonor()
         {
             InitializeComponent();
-            Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
-            Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
+           
+            Routing.RegisterRoute(nameof(InfoMojeDonacijePage), typeof(InfoMojeDonacijePage));
+            Routing.RegisterRoute(nameof(InfoPrimaociPage), typeof(InfoPrimaociPage));
+            Routing.RegisterRoute(nameof(InfoObavijestiPage), typeof(InfoObavijestiPage));
+            Routing.RegisterRoute(nameof(InfoPotrebePage), typeof(InfoPotrebePage));
+
 
 
 
 
         }
 
-    
 
-    private  void OnMenuItemClicked(object sender, EventArgs e)
+
+        private  void OnMenuItemClicked(object sender, EventArgs e)
         {
            
             Application.Current.MainPage = new LoginPage();

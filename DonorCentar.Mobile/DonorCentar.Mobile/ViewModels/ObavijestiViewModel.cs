@@ -66,10 +66,15 @@ namespace DonorCentar.Mobile.ViewModels
 
         }
 
-        private void OnInfoClicked(Obavijest obj)
+        private async void OnInfoClicked(Obavijest obj)
         {
-            
-             
+
+
+            if (obj == null)
+                return;
+
+
+            await Shell.Current.GoToAsync($"{nameof(InfoObavijestiPage)}?{nameof(InfoObavijestiViewModel.ObavijestId)}={obj.ObavijestId}");
 
         }
     }

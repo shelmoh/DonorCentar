@@ -32,5 +32,13 @@ namespace DonorCentar.WebAPI.Controllers
         {
             return _service.Verifikuj(id);
         }
+
+        [HttpGet("{id}")]
+        public Model.Primalac GetById(int id)
+        {
+            
+            return _service.GetById(id);
+
+        }
     }
 }

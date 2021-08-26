@@ -59,5 +59,19 @@ namespace DonorCentar.WebAPI.Services
 
             return result;
         }
+
+        public override Model.Primalac GetById(int id)
+        {
+            var query = Context.Primalac.Where(x => x.Korisnik.Izbrisan == false).AsQueryable();
+            query = query.Where(x => x.Id == id);
+            query = query.Include(x => x.Korisnik.Grad.Kanton);
+            query = query.Include(x => x.Korisnik.LicniPodaci);
+            query = query.Include(x => x.Korisnik.TipKorisnika);
+            query = query.Include(x => x.Korisnik.LoginPodaci);
+
+            var entity = query.FirstOrDefault();
+
+            return _mapper.Map<Model.Primalac>(entity);
+        }
     }
 }

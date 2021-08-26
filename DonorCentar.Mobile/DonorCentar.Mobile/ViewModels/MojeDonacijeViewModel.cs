@@ -57,9 +57,15 @@ namespace DonorCentar.Mobile.ViewModels
 
         }
 
-        private void OnInfoClicked(Donacija obj)
+        private async void OnInfoClicked(Donacija obj)
         {
+           
+                if (obj == null)
+                    return;
 
+                
+                await Shell.Current.GoToAsync($"{nameof(InfoMojeDonacijePage)}?{nameof(InfoMojeDonacijeViewModel.DonacijaId)}={obj.DonacijaId}");
+            
 
 
         }
