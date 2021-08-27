@@ -14,6 +14,10 @@ namespace DonorCentar.Mobile
         {
             InitializeComponent();
             Routing.RegisterRoute(nameof(InfoObavijestiPage), typeof(InfoObavijestiPage));
+            Routing.RegisterRoute(nameof(InfoPrimaociPage), typeof(InfoPrimaociPage));
+
+
+
 
 
 

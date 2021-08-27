@@ -23,7 +23,7 @@ namespace DonorCentar.WebAPI.Services
         {
 
             var query = Context.Donacija.AsQueryable();
-            query = query.Include(x => x.TipDonacije).Include(x => x.Donor.LicniPodaci).Include(x => x.Informacije).Include(x => x.Primalac.LicniPodaci).Include(x => x.Status).Include(x => x.Transport.LicniPodaci).Include(x => x.VrstaDonacije);
+            query = query.Include(x => x.TipDonacije).Include(x => x.Donor.LicniPodaci).Include(x => x.Informacije).Include(x => x.Primalac.LicniPodaci).Include(x => x.Status).Include(x => x.Transport.LicniPodaci).Include(x => x.VrstaDonacije).Include(x => x.Donor.Grad).Include(x => x.Primalac.Grad);
 
             if (!string.IsNullOrWhiteSpace(search?.Tip))
             {
@@ -47,7 +47,18 @@ namespace DonorCentar.WebAPI.Services
 
             if (search?.PartnerId != null)
             {
-                query = query.Where(x => x.TransportId == search.PartnerId);
+                
+
+                if (search.PartnerId==0)
+                {
+                    query = query.Where(x => x.TransportId == null);
+
+
+                }
+
+                else
+                    query = query.Where(x => x.TransportId == search.PartnerId);
+
             }
 
 

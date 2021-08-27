@@ -83,6 +83,9 @@
     <FlyoutItem Title="Donacije bez transporta" >
         <ShellContent Route="DonacijeBezTransportaPage" ContentTemplate="{DataTemplate local:DonacijeBezTransportaPage}" />
     </FlyoutItem>
+    <FlyoutItem Title="Prihvaćene donacije" >
+        <ShellContent Route="DonacijeSaTransportomPage" ContentTemplate="{DataTemplate local:DonacijeSaTransportomPage}" />
+    </FlyoutItem>
    
     <FlyoutItem Title="Primaoci" >
         <ShellContent Route="PrimaociPage" ContentTemplate="{DataTemplate local:PrimaociPage}" />

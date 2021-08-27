@@ -10,15 +10,15 @@ using Xamarin.Forms.Xaml;
 namespace DonorCentar.Mobile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DonacijeBezTransportaPage : ContentPage
+    public partial class DonacijeSaTransportomPage : ContentPage
     {
-        private DonacijeBezTransportaViewModel model;
+        private DonacijeSaTransportomViewModel model;
 
-        public DonacijeBezTransportaPage()
+        public DonacijeSaTransportomPage()
         {
 
             InitializeComponent();
-            this.BindingContext=model = new DonacijeBezTransportaViewModel();
+            this.BindingContext=model = new DonacijeSaTransportomViewModel();
             
         }
 

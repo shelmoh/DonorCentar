@@ -47,6 +47,9 @@
     <Compile Update="AppShellPartner.xaml.cs">
       <DependentUpon>AppShellPartner.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\DonacijeSaTransportomPage.xaml.cs">
+      <DependentUpon>DonacijeSaTransportomPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\InfoMojePotrebePage.xaml.cs">
       <DependentUpon>InfoMojePotrebePage.xaml</DependentUpon>
     </Compile>

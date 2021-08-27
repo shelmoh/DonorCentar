@@ -12,12 +12,11 @@ using Xamarin.Forms;
 
 namespace DonorCentar.Mobile.ViewModels
 {
-    public class DonacijeBezTransportaViewModel : BaseViewModel
+    public class DonacijeSaTransportomViewModel : BaseViewModel
     {
         private readonly APIService _servicedonacija = new APIService("Donacija");
 
         public ObservableCollection<Donacija> Donacije { get; set; } = new ObservableCollection<Donacija>();
-        public ICommand PrihvatiCommand { get; }
 
 
         public ICommand UcitajCommand { get; }
@@ -39,31 +38,21 @@ namespace DonorCentar.Mobile.ViewModels
  
 
 
-        public DonacijeBezTransportaViewModel()
+        public DonacijeSaTransportomViewModel()
         {
 
-            PrihvatiCommand = new Command<Donacija>(OnPrihvatiClicked);
             UcitajCommand = new Command(async () => await UcitajDonacije());
 
 
         }
-        private async void OnPrihvatiClicked(Donacija obj)
-        {
-
-            obj.TransportId = APIService.Korisnik.Id;
-            var entity = await _servicedonacija.Update<Donacija>(obj.DonacijaId, obj);
-
-            if (entity != null)
-                await UcitajDonacije();
-
-        }
+        
 
         private async Task UcitajDonacije()
         {
             var list = await _servicedonacija.Get<List<Donacija>>(new DonacijaSearchRequest
             {
                 Tip = Pretraga,
-                PartnerId=0
+                PartnerId=APIService.Korisnik.Id
             
             });
 
