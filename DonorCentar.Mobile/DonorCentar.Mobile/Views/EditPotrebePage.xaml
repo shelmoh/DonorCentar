@@ -5,7 +5,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:control="clr-namespace:DonorCentar.Mobile.Controls" xmlns:behaviour="clr-namespace:DonorCentar.Mobile.Behaviors" xmlns:converter="clr-namespace:DonorCentar.Mobile.Converters" xmlns:viewModel="clr-namespace:DonorCentar.Mobile.ViewModels"
              mc:Ignorable="d"
-             x:Class="DonorCentar.Mobile.Views.PotrebaPage"
+             x:Class="DonorCentar.Mobile.Views.EditPotrebePage"
              Shell.NavBarIsVisible="False">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -18,11 +18,11 @@
 
 
     <ContentPage.Content>
-        <ScrollView x:DataType="viewModel:PotrebaViewModel">
+        <ScrollView x:DataType="viewModel:EditPotrebeViewModel">
             <StackLayout Padding="30,20,30,0">
                 <Image Source="logo.png" HeightRequest="90"/>
                 <Label Text="DonorCentar" HorizontalOptions="Center" TextColor="Gray"/>
-                <Label Text="Zatraži !" FontSize="30"/>
+                <Label Text="Uredite potrebu" FontSize="30"/>
 
 
                 <Grid Margin="0,20,0,0">
@@ -42,7 +42,7 @@
                     <Label  Text="Tip potrebe"  TextColor="DarkOrange"/>
 
 
-                    <combobox:SfComboBox DataSource="{Binding TipoviDonacija}"  SelectedItem="{Binding TipDonacije}" Margin="0,0,0,30" Grid.Column="1" BorderColor="DarkOrange" TextColor="DarkOrange" >
+                    <combobox:SfComboBox DataSource="{Binding TipoviDonacija}"  SelectedItem="{Binding TipDonacije}"  Margin="0,0,0,30" Grid.Column="1" BorderColor="DarkOrange" TextColor="DarkOrange" >
                     </combobox:SfComboBox>
 
 
@@ -62,7 +62,7 @@
                                         FontSize="15"
                                         Style="{StaticResource BorderlessEntryStyle}"
                                         Text="{Binding Donacija.Opis}">
-                       
+                        
                     </control:BorderlessEntry>
                     <BoxView Grid.Row="5" Grid.ColumnSpan="2" Margin="0,-2,0,0" HeightRequest="1" BackgroundColor="LightGray" CornerRadius="10"/>
 
@@ -70,7 +70,7 @@
 
 
 
-                <Button Margin="100,20,100,0" CornerRadius="4" BackgroundColor="DarkOrange" VerticalOptions="Center" Text="Spremi" Command="{Binding ZatraziCommand}"/>
+                <Button Margin="100,20,100,0" CornerRadius="4" BackgroundColor="DarkOrange" VerticalOptions="Center" Text="Spremi" Command="{Binding EditCommand}"/>
               
                 
             </StackLayout>

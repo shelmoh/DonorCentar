@@ -74,5 +74,6 @@ namespace DonorCentar.WebAPI.Services
             return _mapper.Map<Model.Donacija>(entity);
         }
 
+       
     }
 }

@@ -13,17 +13,23 @@ namespace DonorCentar.Mobile
         public AppShellPrimalac()
         {
             InitializeComponent();
-            Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
-            Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
+            Routing.RegisterRoute(nameof(InfoObavijestiPage), typeof(InfoObavijestiPage));
+            Routing.RegisterRoute(nameof(InfoMojePotrebePage), typeof(InfoMojePotrebePage));
+            Routing.RegisterRoute(nameof(EditPotrebePage), typeof(EditPotrebePage));
+            Routing.RegisterRoute(nameof(InfoMojeDonacijePage), typeof(InfoMojeDonacijePage));
 
-           
+
+
+
+
+
 
 
         }
-       
-    
 
-    private  void OnMenuItemClicked(object sender, EventArgs e)
+
+
+        private  void OnMenuItemClicked(object sender, EventArgs e)
         {
            
             Application.Current.MainPage = new LoginPage();

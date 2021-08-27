@@ -22,13 +22,11 @@ namespace DonorCentar.WebAPI.Mapping
             CreateMap<Database.Kanton, Model.Kanton>().ReverseMap();
             CreateMap<Database.LicniPodaci, Model.LicniPodaci>().ReverseMap();
             CreateMap<Database.LoginPodaci, Model.LoginPodaci>().ReverseMap();
-            CreateMap<Database.Notifikacija, Model.Notifikacija>().ReverseMap();
             CreateMap<Database.Partner, Model.Partner>().ReverseMap();
             CreateMap<Database.Primalac, Model.Primalac>().ReverseMap();
             CreateMap<Database.Status, Model.Status>().ReverseMap();
             CreateMap<Database.TipDonacije, Model.TipDonacije>().ReverseMap();
             CreateMap<Database.TipKorisnika, Model.TipKorisnika>().ReverseMap();
-            CreateMap<Database.TipNotifikacije, Model.TipNotifikacije>().ReverseMap();
             CreateMap<Database.VrstaDonacije, Model.VrstaDonacije>().ReverseMap();
             CreateMap<Database.Obavijest, Model.Obavijest>().ReverseMap();
 

@@ -114,5 +114,12 @@ namespace DonorCentar.Mobile
             }
 
         }
+
+        public async Task<T> Delete<T>(object id)
+        {
+            var url = $"{ApiUrl}/{_route}/{id}";
+
+            return await url.WithBasicAuth(Username, Password).DeleteAsync().ReceiveJson<T>();
+        }
     }
 }

@@ -23,7 +23,6 @@ namespace DonorCentar.WebAPI.Database
         public DbSet<Primalac> Primalac { get; set; }
         public DbSet<TipKorisnika> TipKorisnika { get; set; }
         public DbSet<Obavijest> Obavijest { get; set; }
-        public DbSet<TipNotifikacije> TipNotifikacije { get; set; }
         public DbSet<VrstaDonacije> VrstaDonacije { get; set; }
         public DbSet<TipDonacije> TipDonacije { get; set; }
         public DbSet<Status> Status { get; set; }
@@ -32,7 +31,6 @@ namespace DonorCentar.WebAPI.Database
         public DbSet<Dojam> Dojam { get; set; }
         public DbSet<DojamKorisnik> DojamKorisnik { get; set; }
 
-        public DbSet<Notifikacija> Notifikacija { get; set; }
         
 
 

@@ -47,6 +47,9 @@
     <Compile Update="AppShellPartner.xaml.cs">
       <DependentUpon>AppShellPartner.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\InfoMojePotrebePage.xaml.cs">
+      <DependentUpon>InfoMojePotrebePage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\InfoObavijestiPage.xaml.cs">
       <DependentUpon>InfoObavijestiPage.xaml</DependentUpon>
     </Compile>
@@ -58,6 +61,9 @@
     </Compile>
     <Compile Update="Views\InfoMojeDonacijePage.xaml.cs">
       <DependentUpon>InfoMojeDonacijePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PotrebaPage.xaml.cs">
+      <DependentUpon>PotrebaPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\PrimljeneDonacijePage.xaml.cs">
       <DependentUpon>PrimljeneDonacijePage.xaml</DependentUpon>
@@ -83,8 +89,8 @@
     <Compile Update="Views\MojeDonacijePage.xaml.cs">
       <DependentUpon>MojeDonacijePage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\PotrebaPage.xaml.cs">
-      <DependentUpon>PotrebaPage.xaml</DependentUpon>
+    <Compile Update="Views\EditPotrebePage.xaml.cs">
+      <DependentUpon>EditPotrebePage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\DonirajPage.xaml.cs">
       <DependentUpon>DonirajPage.xaml</DependentUpon>

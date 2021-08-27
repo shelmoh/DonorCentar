@@ -42,9 +42,14 @@ namespace DonorCentar.Mobile.ViewModels
 
         }
 
-        private void OnUkloniClicked(Donacija obj)
+        private async void OnUkloniClicked(Donacija obj)
         {
-            Application.Current.MainPage = new RegisterPage();
+          var entity= await _servicedonacija.Delete<Donacija>(obj.DonacijaId);
+
+            if(entity!=null)
+                await UcitajDonacije();
+
+
         }
 
 

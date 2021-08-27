@@ -10,20 +10,21 @@ using Xamarin.Forms.Xaml;
 namespace DonorCentar.Mobile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MojePotrebePage : ContentPage
+    public partial class EditPotrebePage : ContentPage
     {
-        private MojePotrebeViewModel model;
+        private EditPotrebeViewModel model;
 
-        public MojePotrebePage()
+        public EditPotrebePage()
         {
 
             InitializeComponent();
-            this.BindingContext= model = new MojePotrebeViewModel();
+            this.BindingContext =model= new EditPotrebeViewModel();
             
         }
-        protected async override void OnAppearing()
-        {
-            await model.Init();
-        }
+       
+
+
     }
 }
+
+
