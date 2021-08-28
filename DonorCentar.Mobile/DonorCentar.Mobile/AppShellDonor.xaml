@@ -82,6 +82,9 @@
     <FlyoutItem Title="Doniraj" >
         <ShellContent Route="DonirajPage" ContentTemplate="{DataTemplate local:DonirajPage}" />
     </FlyoutItem>
+    <FlyoutItem Title="Doniraj online" >
+        <ShellContent Route="StripePaymentGatewayPage" ContentTemplate="{DataTemplate local:StripePaymentGatewayPage}" />
+    </FlyoutItem>
     
     <FlyoutItem Title="Moje donacije" >
         <ShellContent Route="MojeDonacijePage" ContentTemplate="{DataTemplate local:MojeDonacijePage}" />

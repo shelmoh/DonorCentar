@@ -161,12 +161,7 @@ namespace DonorCentar.Mobile.ViewModels
 
 
         }
-        private void OnInfoClicked(Donacija obj)
-        {
-            
-         
-
-        }
+     
 
     }
 }

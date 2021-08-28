@@ -1,5 +1,6 @@
 using DonorCentar.Mobile.Services;
 using DonorCentar.Mobile.Views;
+using Stripe;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -11,7 +12,7 @@ using Xamarin.Forms.Xaml;
      [assembly: ExportFont("UIFontIcons.ttf", Alias = "FontIcons")]
 namespace DonorCentar.Mobile
 {
-    public partial class App : Application
+    public partial class App : Xamarin.Forms.Application
     {
 
         public App()
@@ -19,7 +20,7 @@ namespace DonorCentar.Mobile
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-           
+            StripeConfiguration.ApiKey = "sk_test_51JTSrhBzXiT057tOXl9IjVLR0RQuEPZDktpkgzT9Y8iavBm5fYrY6COqWnF0MVD2ZwD0VwbJx2AGJgUemqBN4dyx00XX8s3cHO";
             MainPage = new LoginPage();
         }
 
