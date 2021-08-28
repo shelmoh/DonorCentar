@@ -51,7 +51,8 @@ namespace DonorCentar.Mobile.ViewModels
         {
             var list = await _servicedonacija.Get<List<Donacija>>(new DonacijaSearchRequest
             {
-                Tip = Pretraga,
+                
+                Grad = Pretraga,
                 PartnerId=APIService.Korisnik.Id
             
             });
@@ -59,7 +60,7 @@ namespace DonorCentar.Mobile.ViewModels
             Donacije.Clear();
             foreach (var item in list)
             {
-
+                if(item.DonorId!=null)
                 Donacije.Add(item);
             }
 

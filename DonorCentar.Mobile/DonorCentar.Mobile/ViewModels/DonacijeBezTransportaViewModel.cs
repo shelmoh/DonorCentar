@@ -62,8 +62,9 @@ namespace DonorCentar.Mobile.ViewModels
         {
             var list = await _servicedonacija.Get<List<Donacija>>(new DonacijaSearchRequest
             {
-                Tip = Pretraga,
-                PartnerId=0
+                Grad=Pretraga,
+                PartnerId=0,
+                Vrsta="Donacija"
             
             });
 

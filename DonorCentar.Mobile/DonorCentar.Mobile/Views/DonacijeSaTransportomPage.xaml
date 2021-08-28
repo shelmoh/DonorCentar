@@ -74,6 +74,14 @@
                             LineBreakMode="NoWrap" 
                             Style="{DynamicResource ListItemTextStyle}" 
                             FontSize="16" />
+                                    <Label Text="/" 
+                            LineBreakMode="NoWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="16" />
+                                    <Label Text="{Binding Donor.LicniPodaci.BrojTelefona}" 
+                            LineBreakMode="NoWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="16" />
                                     
                                 </StackLayout>
                                 <StackLayout VerticalOptions="Center" Grid.Column="0" Grid.Row="1" Orientation="Horizontal">
@@ -100,11 +108,13 @@
                             LineBreakMode="NoWrap" 
                             Style="{DynamicResource ListItemTextStyle}" 
                             FontSize="16" />
+                                    
                                 </StackLayout>
+                                
+           
 
 
-
-                                <BoxView Grid.Row="2" Grid.ColumnSpan="2" Margin="0,3,0,0" HeightRequest="1" BackgroundColor="LightGray" CornerRadius="10"/>
+            <BoxView Grid.Row="2" Grid.ColumnSpan="2" Margin="0,3,0,0" HeightRequest="1" BackgroundColor="LightGray" CornerRadius="10"/>
                            </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>

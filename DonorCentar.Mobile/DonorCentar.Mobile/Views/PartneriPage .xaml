@@ -61,7 +61,8 @@
                                                     <Span FontAttributes="Bold" FontSize="16" Text="{Binding Korisnik.Prezime}"/>
                                                     <Span Text=" / "/>
                                                     <Span Text="{Binding Korisnik.GradNaziv}"/>
-
+                                                    <Span Text=" / "/>
+                                                    <Span Text="{Binding Korisnik.LicniPodaci.BrojTelefona}"/>
                                                 </FormattedString.Spans>
                                             </FormattedString>
                                         </Label.FormattedText>

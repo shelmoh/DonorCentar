@@ -33,7 +33,7 @@
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
 
-                        <ColumnDefinition Width="80*" />
+                        <ColumnDefinition Width="150" />
                         
                         <ColumnDefinition Width="Auto" />
 
@@ -80,7 +80,7 @@
                     </Label>
 
                     <BoxView Grid.Row="2" Grid.ColumnSpan="4" Margin="0,3,0,0" HeightRequest="1" BackgroundColor="LightGray" />
-                    <Label FontSize="17" Text="Datum registracije" Grid.Row="2" Grid.Column="0"></Label>
+                    <Label FontSize="17" Text="Broj telefona" Grid.Row="2" Grid.Column="0"></Label>
 
                     <Label  Grid.Row="2"  Grid.Column="1" VerticalOptions="Center"
                             LineBreakMode="NoWrap" 
@@ -89,7 +89,7 @@
                             <FormattedString>
                                 <FormattedString.Spans>
 
-                                    <Span FontSize="17" FontAttributes="Bold"  Text="{Binding Primalac.DatumRegistracije, StringFormat='{0:MMMM dd, yyyy}'}"/>
+                                    <Span FontSize="17" FontAttributes="Bold"  Text="{Binding Primalac.Korisnik.LicniPodaci.BrojTelefona}"/>
                                     
 
                                 </FormattedString.Spans>
@@ -100,7 +100,7 @@
                     <BoxView Grid.Row="3" Grid.ColumnSpan="4" Margin="0,3,0,0" HeightRequest="1" BackgroundColor="LightGray"/>
                     <Label FontSize="17" Text="Verifikovan" Grid.Row="3" Grid.Column="0"></Label>
 
-                    <CheckBox HorizontalOptions="Center" IsChecked="{Binding Primalac.Verifikovan}" Grid.Column="1" Grid.Row="3" IsEnabled="False" ></CheckBox>
+                    <CheckBox  IsChecked="{Binding Primalac.Verifikovan}" Grid.Column="1" Grid.Row="3" IsEnabled="False" ></CheckBox>
 
                     
                    

@@ -29,7 +29,10 @@ namespace DonorCentar.WebAPI.Services
             {
                 query = query.Where(x => x.TipDonacije.Tip.ToLower().Contains(search.Tip.ToLower()));
             }
-
+            if (!string.IsNullOrWhiteSpace(search?.Grad))
+            {
+                query = query.Where(x => x.Donor.Grad.Naziv.ToLower().Contains(search.Grad.ToLower()));
+            }
             if (!string.IsNullOrWhiteSpace(search?.Vrsta))
             {
                 query = query.Where(x => x.VrstaDonacije.Vrsta.ToLower().Contains(search.Vrsta.ToLower()));

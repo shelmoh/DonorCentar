@@ -11,5 +11,7 @@ namespace DonorCentar.Model.Requests
         public int? PrimalacId { get; set; }
         public int? DonorId { get; set; }
         public int? PartnerId { get; set; }
+
+        public string Grad { get; set; }
     }
 }
