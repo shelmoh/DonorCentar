@@ -55,9 +55,14 @@ namespace DonorCentar.Mobile
             }
         }
 
-        public async Task<T> GetById<T>(object id)
+        public async Task<T> GetById<T>(object id, string action= null)
         {
-            var url = $"{ApiUrl}/{_route}/{id}";
+            string url;
+            if(action==null)
+             url = $"{ApiUrl}/{_route}/{id}";
+
+            else
+                url = $"{ApiUrl}/{_route}/{action}/{id}";
 
             return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
         }

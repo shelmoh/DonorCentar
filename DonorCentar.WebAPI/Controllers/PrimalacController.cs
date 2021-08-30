@@ -40,5 +40,17 @@ namespace DonorCentar.WebAPI.Controllers
             return _service.GetById(id);
 
         }
+
+        [HttpGet("GetByKorisnikId/{id}")]
+        public Model.Primalac GetByKorisnikId(int id)
+        {
+            return _service.GetByKorisnikId(id);
+        }
+
+        [HttpPut("UpdateDokument/{id}")]
+        public Model.Primalac UpdateDokument(int id,byte[] dokument)
+        {
+            return _service.UpdateDokument(id,dokument);
+        }
     }
 }

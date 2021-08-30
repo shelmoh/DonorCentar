@@ -60,10 +60,35 @@ namespace DonorCentar.WebAPI.Services
             return result;
         }
 
+        public Model.Primalac UpdateDokument(int id,byte[] Dokument)
+        {
+            var entity = Context.Primalac.Find(id);
+            if(entity!=null)
+            {
+                entity.DokumentVerifikacije = Dokument;
+                Context.SaveChanges();
+            }
+
+            return _mapper.Map<Model.Primalac>(entity);
+        }
         public override Model.Primalac GetById(int id)
         {
             var query = Context.Primalac.Where(x => x.Korisnik.Izbrisan == false).AsQueryable();
             query = query.Where(x => x.Id == id);
+            query = query.Include(x => x.Korisnik.Grad.Kanton);
+            query = query.Include(x => x.Korisnik.LicniPodaci);
+            query = query.Include(x => x.Korisnik.TipKorisnika);
+            query = query.Include(x => x.Korisnik.LoginPodaci);
+
+            var entity = query.FirstOrDefault();
+
+            return _mapper.Map<Model.Primalac>(entity);
+        }
+
+        public Model.Primalac GetByKorisnikId(int id)
+        {
+            var query = Context.Primalac.Where(x => x.Korisnik.Izbrisan == false).AsQueryable();
+            query = query.Where(x => x.KorisnikId == id);
             query = query.Include(x => x.Korisnik.Grad.Kanton);
             query = query.Include(x => x.Korisnik.LicniPodaci);
             query = query.Include(x => x.Korisnik.TipKorisnika);

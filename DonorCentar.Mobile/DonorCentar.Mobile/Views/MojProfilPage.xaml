@@ -12,11 +12,14 @@
             <converter:BooleanToColorConverter x:Key="ColorConverter" />
             <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
             <converter:NameValidationConverter x:Key="FirstValidationErrorConverter" />
+            <converter:ImageConverter x:Key="imgConv"/>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.BindingContext>
         <viewModel:MojProfilViewModel />
     </ContentPage.BindingContext>
+
+
 
 
     <ContentPage.Content>
@@ -26,6 +29,12 @@
                 <Label Text="DonorCentar" HorizontalOptions="Center" TextColor="Gray"/>
                 <Label Text="Moj profil" FontSize="30"/>
 
+                <StackLayout Orientation="Vertical">
+                    <Image x:Name="ProfilnaSlika" Source="{Binding ProfilnaSlika, Converter={StaticResource imgConv}}" />
+                    <Button x:Name="btnSelectPic" Text="Odaberi sliku" Clicked="btnSelectPic_Clicked" BackgroundColor="DarkOrange" TextColor="White" />
+                </StackLayout>
+                
+                
                 <Label Margin="0,20,0,0" Text="Email"  TextColor="DarkOrange"/>
 
 
@@ -182,8 +191,12 @@
 
 
 
+                <StackLayout IsVisible="{Binding IsPrimalac}" Orientation="Vertical">
+                    <Image x:Name="Dokument" Source="{Binding Dokument, Converter={StaticResource imgConv}}" />
+                    <Button x:Name="btnSelectDoc" Text="Odaberi dokument" Clicked="btnSelectDoc_Clicked" BackgroundColor="DarkOrange" TextColor="White" />
+                </StackLayout>
 
-                <Button Margin="0,20,0,0" CornerRadius="4" BackgroundColor="DarkOrange" VerticalOptions="Center" Text="Spremi" Command="{Binding SpremiCommand}"/>
+                <Button x:Name="btnSnimi" Margin="0,20,0,0" CornerRadius="4" BackgroundColor="DarkOrange" VerticalOptions="Center" Text="Spremi" Command="{Binding SpremiCommand}"/>
 
 
             </StackLayout>

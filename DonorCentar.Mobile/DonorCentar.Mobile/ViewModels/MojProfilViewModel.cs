@@ -15,6 +15,8 @@ namespace DonorCentar.Mobile.ViewModels
     {
 
         private readonly APIService _servicekorisnici = new APIService("Korisnici");
+        private readonly APIService _servicePRIMALAC = new APIService("Primalac");
+
 
         private ValidatableObject<string> email = new ValidatableObject<string>();
         private Korisnik korisnik;
@@ -24,6 +26,9 @@ namespace DonorCentar.Mobile.ViewModels
 
         private ValidatableObject<string> adresa = new ValidatableObject<string>();
         private ValidatableObject<string> brojtelefona = new ValidatableObject<string>();
+        private byte[] profilnaslika;
+        private byte[] dokument;
+
 
         public MojProfilViewModel()
         {
@@ -42,7 +47,7 @@ namespace DonorCentar.Mobile.ViewModels
                     Email = Email.Value,
                     Ime = Ime.Value,
                     Prezime = Prezime.Value,
-                    ProfilnaSlika = korisnik.LicniPodaci.ProfilnaSlika
+                    ProfilnaSlika = ProfilnaSlika
                 },
                 LoginPodaci = new LoginPodaci
                 {
@@ -55,6 +60,10 @@ namespace DonorCentar.Mobile.ViewModels
              var entity = await _servicekorisnici.Update<Korisnik>(korisnik.Id, request);
             if(entity!=null)
             {
+                if(IsPrimalac)
+                {
+                    await _servicePRIMALAC.Update<Primalac>(primalac.Id, dokument, "UpdateDokument");
+                }
                 await Application.Current.MainPage.DisplayAlert("Poruka", "Izmjena je uspješno sačuvana.", "OK");
                 if (!string.IsNullOrEmpty(Password.Value))
                     APIService.Password = password.Value;
@@ -72,17 +81,30 @@ namespace DonorCentar.Mobile.ViewModels
             await UcitajKorisnika();
             AddValidationRules();
 
+            IsPrimalac = korisnik.Tip == "Primalac";
+
+            if (IsPrimalac)
+                await UcitajPrimaoca();
+
 
         }
 
+        private async Task UcitajPrimaoca()
+        {
+            var p = await _servicePRIMALAC.GetById<Primalac>(korisnik.Id, "GetByKorisnikId");
+            primalac = p;
+            Dokument = p.DokumentVerifikacije;
 
-
+        }
 
         private async Task UcitajKorisnika()
         {
+
             var k= await _servicekorisnici.Get<Korisnik>(null,"Profil");
             korisnik = k;
 
+            ProfilnaSlika = k.LicniPodaci.ProfilnaSlika;
+            
             Email = new ValidatableObject<string> { Value = k.Email };
             Password = new ValidatableObject<string> { Value = "" };
             Adresa = new ValidatableObject<string> { Value = k.LicniPodaci.Adresa };
@@ -129,10 +151,7 @@ namespace DonorCentar.Mobile.ViewModels
 
         }
 
-        private void OnLogin()
-        {
-            Application.Current.MainPage = new LoginPage();
-        }
+       
 
 
         #region properties
@@ -239,9 +258,54 @@ namespace DonorCentar.Mobile.ViewModels
             }
         }
 
-        
+        public byte[] ProfilnaSlika
+        {
+            get
+            {
+                return this.profilnaslika;
+            }
 
-     
+            set
+            {
+                if (this.profilnaslika == value)
+                {
+                    return;
+                }
+
+                this.SetProperty(ref this.profilnaslika, value);
+            }
+        }
+
+
+        public byte[] Dokument
+        {
+            get
+            {
+                return this.dokument;
+            }
+
+            set
+            {
+                if (this.dokument == value)
+                {
+                    return;
+                }
+
+                this.SetProperty(ref this.dokument, value);
+            }
+        }
+
+
+        private bool isPrimalac;
+        private Primalac primalac;
+
+        public bool IsPrimalac
+        {
+            get { return isPrimalac; }
+            set { SetProperty(ref isPrimalac , value); }
+        }
+
+
 
         #endregion
     }
