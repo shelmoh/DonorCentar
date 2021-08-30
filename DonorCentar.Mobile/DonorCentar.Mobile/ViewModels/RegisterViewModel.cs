@@ -1,4 +1,5 @@
 ﻿using DonorCentar.Mobile.Validators;
+using DonorCentar.Mobile.Validators.Rules;
 using DonorCentar.Mobile.Views;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,12 @@ namespace DonorCentar.Mobile.ViewModels
         public ObservableCollection<Model.Grad> Gradovi { get; set; } = new ObservableCollection<Model.Grad>();
 
         private Model.TipKorisnika odabranitipkorisnika;
+
+        public RegisterViewModel()
+        {
+            AddValidationRules();
+        }
+
         public ObservableCollection<Model.TipKorisnika> TipoviKorisnika { get; set; } = new ObservableCollection<Model.TipKorisnika>();
 
         public ICommand LoginCommand => new Command(OnLogin);
@@ -55,6 +62,20 @@ namespace DonorCentar.Mobile.ViewModels
 
         private async void OnRegister()
         {
+            if (!AreFieldsValid())
+                return;
+            if (OdabraniTipKorisnika == null)
+            {
+                await Application.Current.MainPage.DisplayAlert("Greška", "Potrebno unijeti tip korisnika!", "OK");
+                return;
+
+            }
+            if (OdabraniGrad == null)
+            {
+                await Application.Current.MainPage.DisplayAlert("Greška", "Potrebno unijeti grad!", "OK");
+                return;
+
+            }
             Model.Requests.KorisniciInsertRequest request = new Model.Requests.KorisniciInsertRequest
             {
                 
@@ -99,6 +120,32 @@ namespace DonorCentar.Mobile.ViewModels
               
             }
 
+        }
+
+        public bool AreFieldsValid()
+        {
+            bool isEmailValid = this.Email.Validate();
+            bool isPasswordValid = this.Password.Validate();
+            bool isAdresaValid = this.Adresa.Validate();
+            bool isBrojValid = this.BrojTelefona.Validate();
+            bool isImeValid = this.Ime.Validate();
+
+            bool isKImeValid = this.KorisnickoIme.Validate();
+            return isEmailValid && isPasswordValid && isAdresaValid && isBrojValid &&isImeValid  &&isKImeValid;
+        }
+
+        
+
+     
+        private void AddValidationRules()
+        {
+            this.Password.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Password potreban" });
+            this.Adresa.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Adresa potrebna" });
+            this.Email.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Email potreban" });
+            this.BrojTelefona.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Broj telefona potreban" });
+            this.Ime.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Ime potrebno" });
+            this.KorisnickoIme.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Korisničko ime potrebno" });
+           
         }
 
         private void OnLogin()

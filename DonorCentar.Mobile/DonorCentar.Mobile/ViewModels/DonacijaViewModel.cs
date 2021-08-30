@@ -20,6 +20,15 @@ namespace DonorCentar.Mobile.ViewModels
         private DonacijaInsertRequest donacija = new DonacijaInsertRequest();
         private TipDonacije tipdonacije;
 
+
+        private string kolicina;
+
+        public string Kolicina
+        {
+            get { return kolicina; }
+            set { SetProperty(ref kolicina, value); }
+        }
+
         private bool transport;
 
         public bool Transport
@@ -70,13 +79,46 @@ namespace DonorCentar.Mobile.ViewModels
         private async void OnDonirajClicked()
         {
 
+            if(primalac==null)
+            {
+                await Application.Current.MainPage.DisplayAlert("Greška", "Potrebno unijeti primaoca!", "OK");
+                return;
+            }
+            if (tipdonacije == null)
+            {
+                await Application.Current.MainPage.DisplayAlert("Greška", "Potrebno unijeti tip donacije!", "OK");
+                return;
+
+            }
+            if (jedinicamjere == null)
+            {
+                await Application.Current.MainPage.DisplayAlert("Greška", "Potrebno unijeti jedinicu mjere!", "OK");
+                return;
+
+            }
+            if (kolicina == null || !decimal.TryParse(kolicina,out decimal val) || val<1)
+            {
+                await Application.Current.MainPage.DisplayAlert("Greška", "Potrebno unijeti količinu!", "OK");
+                return;
+
+            }
+
+            if( string.IsNullOrEmpty( Donacija.Opis))
+            {
+                await Application.Current.MainPage.DisplayAlert("Greška", "Potrebno unijeti opis!", "OK");
+                return;
+            }
+
+
+            Donacija.Kolicina = decimal.Parse(kolicina);
             Donacija.InformacijeId = transport ? 1 : 4;
             Donacija.TipDonacijeId = tipdonacije.TipDonacijeId;
             Donacija.PrimalacId = primalac.KorisnikId;
             Donacija.VrstaDonacijeId = 1;
-            Donacija.StatusId = transport ? 4 : 3;
+            Donacija.StatusId =  5 ;
             Donacija.JedinicaMjere = jedinicamjere.jedinicaMjere;
             
+           
 
             Donacija.DonorId = APIService.Korisnik.Id;
             var entity = await _servicedonacija.Insert<Donacija>(Donacija);

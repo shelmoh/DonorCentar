@@ -91,7 +91,7 @@
                                         
                                         FontSize="15"
                                         Style="{StaticResource BorderlessEntryStyle}"
-                                        Text="{Binding Donacija.Kolicina}">
+                                        Text="{Binding Kolicina}">
                         
                     </control:BorderlessEntry>
                     <BoxView Grid.Row="8" Margin="0,-2,0,0" Grid.ColumnSpan="1"  HeightRequest="1" BackgroundColor="LightGray" CornerRadius="10"/>

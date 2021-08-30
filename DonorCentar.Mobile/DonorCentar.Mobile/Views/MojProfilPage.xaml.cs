@@ -12,12 +12,19 @@ namespace DonorCentar.Mobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MojProfilPage : ContentPage
     {
+        private MojProfilViewModel model;
+
         public MojProfilPage()
         {
 
             InitializeComponent();
-            this.BindingContext = new MojProfilViewModel();
+            this.BindingContext= model = new MojProfilViewModel();
             
+        }
+
+        protected async override void OnAppearing()
+        {
+            await model.Init();
         }
     }
 }

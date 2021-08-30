@@ -54,12 +54,12 @@
 
                                     <Label Grid.Column="0" VerticalOptions="Center"
                             LineBreakMode="NoWrap" 
-                            Style="{DynamicResource ListItemTextStyle}" 
-                            FontSize="16">
+                           
+                            FontSize="17">
                                         <Label.FormattedText >
                                             <FormattedString>
                                                 <FormattedString.Spans>
-                                                    <Span Text="{Binding TipDonacije.Tip}"/>
+                                                    <Span FontAttributes="Bold" Text="{Binding TipDonacije.Tip}"/>
                                                     <Span Text=" - "/>
                                                     <Span Text="{Binding Donor.Ime}"/>
                                                     <Span Text=" "/>
@@ -71,22 +71,8 @@
                                     </Label>
 
                                 </StackLayout>
-                                <StackLayout VerticalOptions="Center" Margin="0,0,53,0" Grid.Column="2"  HorizontalOptions="End">
-                                <Label 
-                            LineBreakMode="NoWrap" 
-                            Style="{DynamicResource ListItemTextStyle}" 
-                            FontSize="16">
-                                        <Label.FormattedText >
-                                            <FormattedString>
-                                                <FormattedString.Spans>
-                                                    
-                                                    <Span Text="{Binding Status.Opis}"/>
-                                                </FormattedString.Spans>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-
-                                </StackLayout>
+                                
+                               
 
                                 <ImageButton HorizontalOptions="End" Grid.Column="2" Source="infologo.png"  HeightRequest="40" Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:PrimljeneDonacijeViewModel}}, Path=InfoCommand}" CommandParameter="{Binding .}"/>
 

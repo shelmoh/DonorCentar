@@ -109,13 +109,20 @@ namespace DonorCentar.Mobile.ViewModels
 
         public DelegateCommand SubmitCommand => new DelegateCommand(async () =>
         {
+
+            if (primalac == null)
+            {
+                await Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Greška", "Potrebno unijeti primaoca!", "OK");
+                return;
+            }
+
             CreditCardModel.ExpMonth = Convert.ToInt64(ExpMonth);
             CreditCardModel.ExpYear = Convert.ToInt64(ExpYear);
             CancellationTokenSource tokenSource = new CancellationTokenSource();
             CancellationToken token = tokenSource.Token;
             try
             {
-                UserDialogs.Instance.ShowLoading("Payment processing..");
+                UserDialogs.Instance.ShowLoading("Procesiranje..");
                 await Task.Run(async () =>
                 {
 
@@ -147,6 +154,8 @@ namespace DonorCentar.Mobile.ViewModels
                     
 
                     var Donacija = new Model.Requests.DonacijaInsertRequest();
+
+
 
                     Donacija.InformacijeId = 1;
                     Donacija.TipDonacijeId = 3;

@@ -64,11 +64,26 @@ namespace DonorCentar.Mobile.ViewModels
         private async void OnZatraziClicked()
         {
 
+
+            if (tipdonacije==null)
+            {
+                await Application.Current.MainPage.DisplayAlert("Greška", "Potrebno unijeti tip potrebe!", "OK");
+                return;
+
+            }
+
+            if (string.IsNullOrEmpty(Donacija.Opis))
+            {
+                await Application.Current.MainPage.DisplayAlert("Greška", "Potrebno unijeti opis!", "OK");
+                return;
+            }
+
+
             Donacija.InformacijeId = transport ? 1 : 4;
             Donacija.TipDonacijeId = tipdonacije.TipDonacijeId;
            
             Donacija.VrstaDonacijeId = 2;
-            Donacija.StatusId = 5;
+            Donacija.StatusId = 6;
             Donacija.Kolicina = 1;
             Donacija.JedinicaMjere = 0;
             Donacija.PrimalacId = APIService.Korisnik.Id;
