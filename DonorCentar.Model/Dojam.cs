@@ -9,5 +9,10 @@ namespace DonorCentar.Model
     {
         public int Id { get; set; }
         public string VrstaDojma { get; set; }
+
+        public override string ToString()
+        {
+            return VrstaDojma;
+        }
     }
 }

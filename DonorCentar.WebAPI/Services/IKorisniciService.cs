@@ -23,5 +23,6 @@ namespace DonorCentar.WebAPI.Services
         Model.Korisnik Profil();
 
         Model.Korisnik Delete(int id);
+        IList<Donacija> GetPreporuka();
     }
 }

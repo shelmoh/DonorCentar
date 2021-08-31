@@ -221,6 +221,59 @@ namespace DonorCentar.WebAPI.Services
 
             return _mapper.Map<Model.Korisnik>(entity);
         }
+
+        public IList<Model.Donacija> GetPreporuka()
+        {
+            var rng = new Random();
+            var tipovidonacija = Context.TipDonacije.ToList();
+            var donacije = Context.Donacija.Where(x => x.DonorId == LogiraniKorisnik.Id).ToList();
+            var list = new List<Donacija>();
+
+            if (donacije.Count()==0)
+            {
+                
+
+                var primaoci = Context.Primalac.Where(x => x.Verifikovan).OrderBy(x => Guid.NewGuid()).Take(3);
+
+                foreach (var item in primaoci)
+                {
+                    list.Add(new Donacija
+                    {
+                        PrimalacId = item.KorisnikId,
+                        TipDonacijeId = tipovidonacija[rng.Next(0, tipovidonacija.Count())].TipDonacijeId,
+
+
+                    });
+
+
+                }
+
+            }
+
+            else
+            {
+               var tip= donacije.GroupBy(x => x.TipDonacijeId).OrderByDescending(x => x.Count()).FirstOrDefault();
+
+               var primaoci = Context.Primalac.Where(x=>x.Verifikovan).OrderBy(x => Guid.NewGuid()).Take(3);
+
+                foreach (var item in primaoci)
+                {
+                    list.Add(new Donacija
+                    {
+                        PrimalacId = item.KorisnikId,
+                        TipDonacijeId = tip.Key.Value,
+
+
+                    });
+
+
+                }
+
+
+            }
+
+            return _mapper.Map<List<Model.Donacija>>(list);
+        }
     }
 }
 

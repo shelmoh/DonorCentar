@@ -19,7 +19,8 @@ namespace DonorCentar.Mobile.ViewModels
         public ICommand InfoCommand { get; }
 
         public ICommand UkloniCommand { get; }
-
+       
+        public ICommand DojamCommand { get; }
 
         public ICommand UcitajCommand { get; }
 
@@ -42,6 +43,17 @@ namespace DonorCentar.Mobile.ViewModels
 
         }
 
+        private async void OnDojamClicked(Donacija obj)
+        {
+            if (obj == null)
+                return;
+
+
+            await Shell.Current.GoToAsync($"{nameof(DojamPage)}?{nameof(DojamViewModel.DonacijaId)}={obj.DonacijaId}");
+
+
+        }
+
         private async void OnUkloniClicked(Donacija obj)
         {
           var entity= await _servicedonacija.Delete<Donacija>(obj.DonacijaId);
@@ -58,6 +70,7 @@ namespace DonorCentar.Mobile.ViewModels
             InfoCommand = new Command<Donacija>(OnInfoClicked);
             UkloniCommand = new Command<Donacija>(OnUkloniClicked);
             UcitajCommand = new Command(async () => await UcitajDonacije());
+            DojamCommand = new Command<Donacija>(OnDojamClicked);
 
 
         }

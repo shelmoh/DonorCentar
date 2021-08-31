@@ -57,5 +57,13 @@ namespace DonorCentar.WebAPI.Controllers
         {
             return _service.Delete(id);
         }
+
+        [HttpGet("GetPreporuka")]
+        public IList<Model.Donacija> GetPreporuka()
+        {
+            return _service.GetPreporuka();
+        }
+
+
     }
 }

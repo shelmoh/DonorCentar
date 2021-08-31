@@ -18,6 +18,8 @@ namespace DonorCentar.Mobile
             Routing.RegisterRoute(nameof(InfoPrimaociPage), typeof(InfoPrimaociPage));
             Routing.RegisterRoute(nameof(InfoObavijestiPage), typeof(InfoObavijestiPage));
             Routing.RegisterRoute(nameof(InfoPotrebePage), typeof(InfoPotrebePage));
+            Routing.RegisterRoute(nameof(DojamPage), typeof(DojamPage));
+
 
 
 

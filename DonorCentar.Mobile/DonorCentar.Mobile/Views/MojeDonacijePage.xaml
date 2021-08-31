@@ -48,6 +48,8 @@
 
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+
 
                                 </Grid.ColumnDefinitions>
 
@@ -77,8 +79,10 @@
                                 <ImageButton Margin="0,0,0,0" Grid.Column="2" Source="infologo.png"  HeightRequest="40" Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:MojeDonacijeViewModel}}, Path=InfoCommand}" CommandParameter="{Binding .}"/>
 
                                 <Button WidthRequest="80" Margin="0,0,0,0" Grid.Column="3" Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:MojeDonacijeViewModel}}, Path=UkloniCommand}" CommandParameter="{Binding .}"  Text="Ukloni" TextColor="White" BackgroundColor="DarkRed"/>
+                                <Button WidthRequest="80" Margin="0,0,0,0" Grid.Column="4" Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:MojeDonacijeViewModel}}, Path=DojamCommand}" CommandParameter="{Binding .}"  Text="Dojam" TextColor="White" BackgroundColor="DarkOrange"/>
 
-                                <BoxView Grid.Row="1" Grid.ColumnSpan="4" Margin="0,3,0,0" HeightRequest="1" BackgroundColor="LightGray" CornerRadius="10"/>
+
+                                <BoxView Grid.Row="1" Grid.ColumnSpan="5" Margin="0,3,0,0" HeightRequest="1" BackgroundColor="LightGray" CornerRadius="10"/>
                            </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
