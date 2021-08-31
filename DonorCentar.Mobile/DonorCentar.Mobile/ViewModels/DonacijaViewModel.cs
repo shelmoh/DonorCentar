@@ -12,6 +12,8 @@ using Xamarin.Forms;
 
 namespace DonorCentar.Mobile.ViewModels
 {
+    [QueryProperty(nameof(PrimalacId), nameof(PrimalacId))]
+    [QueryProperty(nameof(TipDonacijeId), nameof(TipDonacijeId))]
     public class DonacijaViewModel : BaseViewModel
     {
         private readonly APIService _servicedonacija = new APIService("Donacija");
@@ -19,6 +21,23 @@ namespace DonorCentar.Mobile.ViewModels
         private readonly APIService _serviceprimalac = new APIService("Primalac");
         private DonacijaInsertRequest donacija = new DonacijaInsertRequest();
         private TipDonacije tipdonacije;
+
+        private int primalacId;
+
+        public int PrimalacId
+        {
+            get { return primalacId; }
+            set { SetProperty(ref primalacId ,value); }
+        }
+
+        private int tipdonacijeId;
+                    
+        public int TipDonacijeId
+        {
+            get { return tipdonacijeId; }
+            set { SetProperty(ref tipdonacijeId , value); }
+        }
+
 
 
         private string kolicina;
@@ -171,7 +190,14 @@ namespace DonorCentar.Mobile.ViewModels
             {
 
                 TipoviDonacija.Add(item);
+
+                if (tipdonacijeId != 0 && item.TipDonacijeId==tipdonacijeId)
+                {
+                    TipDonacije = item;
+                }
             }
+
+            
 
 
         }
@@ -185,6 +211,11 @@ namespace DonorCentar.Mobile.ViewModels
             {
 
                 Primaoci.Add(item);
+
+                if (primalacId != 0 && item.KorisnikId == primalacId)
+                {
+                    Primalac = item;
+                }
             }
 
 

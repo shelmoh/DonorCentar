@@ -55,6 +55,9 @@
     <Compile Update="Views\DonacijeSaTransportomPage.xaml.cs">
       <DependentUpon>DonacijeSaTransportomPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\PreporukaPage.xaml.cs">
+      <DependentUpon>PreporukaPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\InfoMojePotrebePage.xaml.cs">
       <DependentUpon>InfoMojePotrebePage.xaml</DependentUpon>
     </Compile>

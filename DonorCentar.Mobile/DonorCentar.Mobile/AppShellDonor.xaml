@@ -94,7 +94,9 @@
         <ShellContent Route="DonirajPotrebuPage" ContentTemplate="{DataTemplate local:DonirajPotrebuPage}" />
     </FlyoutItem>
 
-
+    <FlyoutItem Title="Preporuke" >
+        <ShellContent Route="PreporukaPage" ContentTemplate="{DataTemplate local:PreporukaPage}" />
+    </FlyoutItem>
 
     <FlyoutItem Title="Primaoci" >
         <ShellContent Route="PrimaociPage" ContentTemplate="{DataTemplate local:PrimaociPage}" />

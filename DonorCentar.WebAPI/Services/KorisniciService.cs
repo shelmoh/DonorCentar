@@ -233,15 +233,17 @@ namespace DonorCentar.WebAPI.Services
             {
                 
 
-                var primaoci = Context.Primalac.Where(x => x.Verifikovan).OrderBy(x => Guid.NewGuid()).Take(3);
+                var primaoci = Context.Primalac.Where(x => x.Verifikovan && !x.Korisnik.Izbrisan).Include(x=>x.Korisnik.LicniPodaci).OrderBy(x => Guid.NewGuid()).Take(3);
 
                 foreach (var item in primaoci)
                 {
+                    var tipdonacije = tipovidonacija[rng.Next(0, tipovidonacija.Count())];
                     list.Add(new Donacija
                     {
                         PrimalacId = item.KorisnikId,
-                        TipDonacijeId = tipovidonacija[rng.Next(0, tipovidonacija.Count())].TipDonacijeId,
-
+                        TipDonacijeId = tipdonacije.TipDonacijeId,
+                        Primalac=item.Korisnik,
+                        TipDonacije=tipdonacije
 
                     });
 
@@ -254,7 +256,14 @@ namespace DonorCentar.WebAPI.Services
             {
                var tip= donacije.GroupBy(x => x.TipDonacijeId).OrderByDescending(x => x.Count()).FirstOrDefault();
 
-               var primaoci = Context.Primalac.Where(x=>x.Verifikovan).OrderBy(x => Guid.NewGuid()).Take(3);
+                
+
+
+               var primaoci = Context.Primalac.Where(x=>x.Verifikovan && !x.Korisnik.Izbrisan).Include(x => x.Korisnik.LicniPodaci)
+                   .OrderByDescending(x => Context.DojamKorisnik.Count(y=>y.Donacija.PrimalacId==x.KorisnikId && y.Dojam.VrstaDojma=="Pozitivan")).ToList()
+                   .Take(3);
+
+
 
                 foreach (var item in primaoci)
                 {
@@ -262,6 +271,8 @@ namespace DonorCentar.WebAPI.Services
                     {
                         PrimalacId = item.KorisnikId,
                         TipDonacijeId = tip.Key.Value,
+                        Primalac=item.Korisnik,
+                        TipDonacije=Context.TipDonacije.Find(tip.Key.Value)
 
 
                     });
