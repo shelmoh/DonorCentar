@@ -33,7 +33,7 @@ namespace DonorCentar.WebAPI
         {
             
             services.AddDbContext<BazaPodataka>(options =>
-           options.UseSqlServer(Configuration.GetConnectionString("database")));
+           options.UseSqlServer(Configuration.GetConnectionString("Docker")));
 
             services.AddAutoMapper(typeof(Startup));
 
